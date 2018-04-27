@@ -1,3 +1,7 @@
+/*
+ * Pair programming with William and Ian.
+ */
+
 package com.williamhelton.scanandcalc;
 
 import java.util.Scanner;

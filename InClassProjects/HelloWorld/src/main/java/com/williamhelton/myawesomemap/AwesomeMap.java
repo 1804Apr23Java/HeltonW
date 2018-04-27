@@ -1,14 +1,97 @@
+/*
+ * TRIPLE PAIR PROGRAMMING
+ * by William, JJ and Collin
+ */
+
 package main.java.com.williamhelton.myawesomemap;
 
 public class AwesomeMap {
-	String[] a = new String[1];
-	String[] b = new String[1];
-	public Object remove(String s) {
-		for (int i = 0; i<a.length;i++) {
-			if(a[i].equals(s)) {
-				//make new array with value from index not in it (2)
+	
+	String[] keyArray = new String[0];
+	String[] valueArray = new String[0];
+
+	public String remove(String key) {
+		for (int i = 0; i < keyArray.length; i++) {
+			
+			if (keyArray[i] != null && keyArray[i].equals(key)) {
+				
+				String[] tempKeyArray = new String[keyArray.length-1];
+				String[] tempValueArray = new String[valueArray.length-1];
+				
+				String val = valueArray[i]; 
+				
+				
+				
+				if(i==0 && keyArray.length > 1) {
+					System.out.println("if");
+					System.arraycopy(keyArray, 1, tempKeyArray, 0, keyArray.length-1);
+					System.arraycopy(valueArray, 1, tempValueArray, 0, keyArray.length-1);
+				}
+				
+//				else if(i==0) {
+//					
+//				}
+				
+				else if(i==keyArray.length-1) {
+					// where we placed 0s
+					System.out.println("else if");
+					System.arraycopy(keyArray, 0, tempKeyArray, 0, keyArray.length - i);
+					System.arraycopy(valueArray, 0, tempValueArray, 0, valueArray.length - i);
+				}
+				else {
+					System.out.println("else");
+					System.arraycopy(keyArray, 0, tempKeyArray, 0, i);
+					System.arraycopy(valueArray, 0, tempValueArray, 0, i);
+					System.arraycopy(keyArray, i+1, tempKeyArray, i, keyArray.length - i - 1);
+					System.arraycopy(valueArray, i+1, tempValueArray, i, valueArray.length - i - 1);
+				}
+				
+				keyArray = tempKeyArray;
+				valueArray = tempValueArray;
+				
+				return val;
+				
 			}
 		}
-		return 0;
+		return null;
+	}
+
+	public boolean add(String key, String val) {
+		
+		for (int i = 0; i < keyArray.length; i++) {
+			
+			if (keyArray[i] != null && keyArray[i].equals(key)) {
+				
+				valueArray[i] = val;
+				return true;
+			}
+		}
+		
+		String[] tempKeyArray = new String[keyArray.length+1];
+		String[] tempValueArray = new String[valueArray.length+1];
+		
+		System.arraycopy(keyArray, 0, tempKeyArray, 0, keyArray.length);
+		System.arraycopy(valueArray, 0, tempValueArray, 0, valueArray.length);
+		
+		tempKeyArray[tempKeyArray.length-1] = key;
+		tempValueArray[tempValueArray.length-1] = val;
+		
+		keyArray = tempKeyArray;
+		valueArray = tempValueArray;
+		
+		return false;
+	}
+
+	public boolean contains(String key) {
+		
+		for (String s : keyArray) {
+			
+			if (s.equals(key)) {
+				
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

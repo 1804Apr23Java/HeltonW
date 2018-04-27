@@ -1,7 +1,13 @@
 package com.williamhelton.media;
 
-public class Movie extends Media implements Comparable<Movie> {
-private String producer;
+import java.io.Serializable;
+
+public class Movie extends Media implements Comparable<Movie>, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1543392625539284115L;
+	private String producer;
 	
 	public Movie() {
 		super();
