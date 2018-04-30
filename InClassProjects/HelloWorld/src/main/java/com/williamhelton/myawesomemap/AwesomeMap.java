@@ -11,31 +11,24 @@ public class AwesomeMap {
 	String[] valueArray = new String[0];
 
 	public String remove(String key) {
-		for (int i = 0; i < keyArray.length; i++) {
-			
+		for (int i = 0; i < keyArray.length; i++) {			
 			if (keyArray[i] != null && keyArray[i].equals(key)) {
 				
 				String[] tempKeyArray = new String[keyArray.length-1];
 				String[] tempValueArray = new String[valueArray.length-1];
 				
 				String val = valueArray[i]; 
-				
-				
-				
+								
 				if(i==0 && keyArray.length > 1) {
-					System.out.println("if");
 					System.arraycopy(keyArray, 1, tempKeyArray, 0, keyArray.length-1);
 					System.arraycopy(valueArray, 1, tempValueArray, 0, keyArray.length-1);
 				}
 				
 				else if(i==keyArray.length-1) {
-					// where we placed 0s
-					System.out.println("else if");
 					System.arraycopy(keyArray, 0, tempKeyArray, 0, keyArray.length - 1);
 					System.arraycopy(valueArray, 0, tempValueArray, 0, valueArray.length - 1);
 				}
 				else {
-					System.out.println("else");
 					System.arraycopy(keyArray, 0, tempKeyArray, 0, i);
 					System.arraycopy(valueArray, 0, tempValueArray, 0, i);
 					System.arraycopy(keyArray, i+1, tempKeyArray, i, keyArray.length - i - 1);
@@ -45,17 +38,14 @@ public class AwesomeMap {
 				keyArray = tempKeyArray;
 				valueArray = tempValueArray;
 				
-				return val;
-				
+				return val;				
 			}
 		}
 		return null;
 	}
 
-	public boolean add(String key, String val) {
-		
-		for (int i = 0; i < keyArray.length; i++) {
-			
+	public boolean add(String key, String val) {		
+		for (int i = 0; i < keyArray.length; i++) {			
 			if (keyArray[i] != null && keyArray[i].equals(key)) {
 				
 				valueArray[i] = val;
@@ -78,28 +68,21 @@ public class AwesomeMap {
 		return false;
 	}
 
-	public boolean contains(String key) {
-		
-		for (String s : keyArray) {
-			
-			if (s.equals(key)) {
-				
+	public boolean contains(String key) {		
+		for (String s : keyArray) {			
+			if (s.equals(key)) {				
 				return true;
 			}
-		}
-		
+		}		
 		return false;
 	}
 	
 	public String get(String key) {
-		for (int i = 0; i < keyArray.length; i++) {
-			
-			if (keyArray[i].equals(key)) {
-				
+		for (int i = 0; i < keyArray.length; i++) {			
+			if (keyArray[i].equals(key)) {				
 				return valueArray[i];
 			}
-		}
-		
+		}		
 		return null;
 	}
 }
