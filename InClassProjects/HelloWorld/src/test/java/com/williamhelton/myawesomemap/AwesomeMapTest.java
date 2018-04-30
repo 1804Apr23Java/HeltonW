@@ -58,4 +58,22 @@ public class AwesomeMapTest {
 		awesomeMap.remove("myKey3");
 		assertEquals(awesomeMap.contains("myKey3"), false);
 	}
+	
+	@Test
+	public void getsValFromMap() {
+		AwesomeMap awesomeMap = new AwesomeMap();
+		awesomeMap.add("myKey1", "myValue1");
+		awesomeMap.add("myKey2", "myValue2");
+		awesomeMap.add("myKey3", "myValue3");
+		assertEquals("myValue2", awesomeMap.get("myKey2"));
+	}
+	
+	@Test
+	public void getValFromMapReturnsNullIfKeyNotFound() {
+		AwesomeMap awesomeMap = new AwesomeMap();
+		awesomeMap.add("myKey1", "myValue1");
+		awesomeMap.add("myKey2", "myValue2");
+		awesomeMap.add("myKey3", "myValue3");
+		assertNull(awesomeMap.get("myKey4"));
+	}
 }

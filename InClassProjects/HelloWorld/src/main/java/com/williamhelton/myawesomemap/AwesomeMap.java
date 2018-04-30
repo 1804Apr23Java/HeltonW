@@ -28,15 +28,11 @@ public class AwesomeMap {
 					System.arraycopy(valueArray, 1, tempValueArray, 0, keyArray.length-1);
 				}
 				
-//				else if(i==0) {
-//					
-//				}
-				
 				else if(i==keyArray.length-1) {
 					// where we placed 0s
 					System.out.println("else if");
-					System.arraycopy(keyArray, 0, tempKeyArray, 0, keyArray.length - i);
-					System.arraycopy(valueArray, 0, tempValueArray, 0, valueArray.length - i);
+					System.arraycopy(keyArray, 0, tempKeyArray, 0, keyArray.length - 1);
+					System.arraycopy(valueArray, 0, tempValueArray, 0, valueArray.length - 1);
 				}
 				else {
 					System.out.println("else");
@@ -93,5 +89,17 @@ public class AwesomeMap {
 		}
 		
 		return false;
+	}
+	
+	public String get(String key) {
+		for (int i = 0; i < keyArray.length; i++) {
+			
+			if (keyArray[i].equals(key)) {
+				
+				return valueArray[i];
+			}
+		}
+		
+		return null;
 	}
 }
