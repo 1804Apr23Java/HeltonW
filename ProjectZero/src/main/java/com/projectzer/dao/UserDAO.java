@@ -7,5 +7,6 @@ public class UserDAO implements UserDAOInterface {
 	
 	public void setUser() {
 		
+		
 	}
 }
