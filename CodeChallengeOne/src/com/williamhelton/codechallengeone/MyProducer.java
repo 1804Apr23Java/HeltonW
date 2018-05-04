@@ -3,7 +3,7 @@ package com.williamhelton.codechallengeone;
 public class MyProducer extends Thread {
 	
 	@Override
-	public synchronized void run(){
+	public void run(){
 		int i = 0;
 		while(true) {
 			if(CodeChallengeOneDriver.pileOfStuff.size() < 10) {
@@ -14,7 +14,7 @@ public class MyProducer extends Thread {
 			}
 			
 			try {
-				Thread.sleep((long) (Math.random() * 500));
+				Thread.sleep((long) (Math.random() * 50));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

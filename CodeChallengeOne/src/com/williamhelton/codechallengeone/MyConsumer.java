@@ -3,7 +3,7 @@ package com.williamhelton.codechallengeone;
 public class MyConsumer extends Thread {
 
 	@Override
-	public synchronized void run(){
+	public void run(){
 		while(true) {
 			int numberToRemove = (int) (Math.random() * (CodeChallengeOneDriver.pileOfStuff.size()));
 			for(int i = 0; i < numberToRemove; i++) {
@@ -11,7 +11,7 @@ public class MyConsumer extends Thread {
 			}
 			
 			try {
-				Thread.sleep((long) (Math.random() * 500));
+				Thread.sleep((long) (Math.random() * 50));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

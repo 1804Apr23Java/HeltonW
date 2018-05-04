@@ -6,7 +6,7 @@ import java.util.List;
 public class CodeChallengeOneDriver {
 	
 	public static List<Integer> pileOfStuff = new ArrayList<>();
-	public static int freeSpace;
+	public static int freeSpace = 0;
 	
 	public static void main(String[] args) {
 		MyProducer producer = new MyProducer();
@@ -18,8 +18,7 @@ public class CodeChallengeOneDriver {
 		consumer.setName("consumer");
 		
 		while(true) {
-			freeSpace = pileOfStuff.size()-10;
-			if(freeSpace < 0) freeSpace = 0;
+			freeSpace = 10-pileOfStuff.size();
 			
 			if(freeSpace == 0) {
 				try {
