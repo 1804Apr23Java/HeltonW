@@ -1,4 +1,4 @@
-package com.projectzer.dao;
+package com.projectzero.dao;
 
 public class Account {
 	private double balance;

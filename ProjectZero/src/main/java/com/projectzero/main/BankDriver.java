@@ -1,77 +1,81 @@
-//package com.projectzero.main;
-//
-//import static com.projectzero.main.MenuStrings.*;
-//
-//import java.io.IOException;
-//import java.sql.Connection;
-//import java.sql.SQLException;
-//import java.util.List;
-//import java.util.Scanner;
-//
-//import com.projectzer.dao.Account;
-//import com.projectzer.dao.AccountDAO;
-//import com.projectzer.dao.User;
-//import com.projectzero.util.ConnectionUtil;
-//
-//public class BankDriver {
-//
-//static Scanner scanner = new Scanner(System.in);
-//	
-//	public static void main(String[] args) {		
-//		userEntersMainMenu();
-//		scanner.close();
-//	}	
-//	
-//	private static void userEntersMainMenu() {
-//		while(true) {
-//			System.out.println(MAIN_MENU);
-//			System.out.println();
-//			char userKeypress = scanner.next().charAt(0);
-//			if (userKeypress == '0')
-//				break;
-//			processMainMenuKeypress(userKeypress);
-//		}
-//		
-//		System.out.println(GOODBYE_USER);
-//	}
-//	
-//	private static void processMainMenuKeypress(char userKeypress) {
-//		switch(userKeypress) {
+package com.projectzero.main;
+
+import static com.projectzero.main.MenuStrings.*;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
+import com.projectzero.dao.Account;
+import com.projectzero.dao.AccountDAO;
+import com.projectzero.dao.User;
+import com.projectzero.dao.UserDAO;
+import com.projectzero.util.ConnectionUtil;
+
+public class BankDriver {
+
+static Scanner scanner = new Scanner(System.in);
+	
+	public static void main(String[] args) {	
+		
+		userEntersMainMenu();
+		scanner.close();
+	}	
+	
+	private static void userEntersMainMenu() {
+		while(true) {
+			System.out.println(MAIN_MENU);
+			System.out.println();
+			char userKeypress = scanner.next().charAt(0);
+			if (userKeypress == '0')
+				break;
+			processMainMenuKeypress(userKeypress);
+		}
+		
+		System.out.println(GOODBYE_USER);
+	}
+	
+	private static void processMainMenuKeypress(char userKeypress) {
+		switch(userKeypress) {
 //			case '1':
 //				userLogIn();
 //				break;
-//			case '2':
-//				createUserAccount();
-//				break;
-//			case '9':
-//				adminLogIn();
-//			case '0':
-//				break;
-//			default:
-//				System.out.println("bad input, try again");
-//		}
-//	}
-//
-//	private static void adminLogIn() {
-//		// ask for username and password
-//		// read from admin.properties
-//		// if yes, go to userEntersAdminMenu
-//		// if no, print line and go back to main menu
-//		
-//	}
-//	
-//	private static void createUserAccount() {
-//		
-//		
-//	}
-//
+			case '2':
+				createUserAccount();
+				break;
+			case '9':
+				adminLogIn();
+				break;
+			default:
+				System.out.println("bad input, try again");
+		}
+	}
+
+	private static void adminLogIn() {
+		// ask for username and password
+		// read from admin.properties
+		// if yes, go to userEntersAdminMenu
+		// if no, print line and go back to main menu
+		
+	}
+	
+	private static void createUserAccount() {
+		System.out.println("Enter user name:");
+		String userName = scanner.next();
+		System.out.println("Enter password:");
+		String password = scanner.next();
+		
+		
+	}
+
 //	private static void userLogIn() {
 //		System.out.println("Enter user name:");
 //		String userName = scanner.next();
 //		System.out.println("Enter password:");
 //		String password = scanner.next();
-//		System.out.println("Logging in user..."); //placeholder
-//		scanner.next(); //placeholder		
+//		
 //		/*
 //		 * Needs a boolean check to see if user is found in DB
 //		 * If true, enter user activities menu and pass a User
@@ -126,8 +130,8 @@
 //		}
 //		
 //	}
-//	
-//	private static boolean validateCurrency(String currencyString) {
-//		return currencyString.matches("[0-9]+\\.[0-9]{2}");
-//	}
-//}
+	
+	private static boolean validateCurrency(String currencyString) {
+		return currencyString.matches("[0-9]+\\.[0-9]{2}");
+	}
+}

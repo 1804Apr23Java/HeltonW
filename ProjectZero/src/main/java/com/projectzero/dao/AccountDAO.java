@@ -1,36 +1,40 @@
-package com.projectzer.dao;
+package com.projectzero.dao;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.projectzero.util.ConnectionUtil;
 
-public class UserDAO implements UserDAOInterface {
-
-	private String filename = "connection.properties";
+public class AccountDAO implements AccountDAOInterface {
 	
+	private String filename = "connection.properties";
+
 	@Override
-	public User getUser(String userName) {
+	public List<Account> getAccounts(int userId) {
 		PreparedStatement p = null;
+		
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
-			String sql = "SELECT * FROM BANK_USER WHERE USER_NAME = ?";
+			String sql = "SELECT * FROM BANK_ACCOUNT WHERE USER_ID = ?";
 			p = con.prepareStatement(sql);
-			p.setString(1, userName);
+			p.setInt(1, userId);
 			ResultSet rs = p.executeQuery();
+			List<Account> results = new ArrayList<>();
 			
-			if(rs.next()) {
-				int userID = rs.getInt("USER_ID");
-				String passwordHash = rs.getString("PASSWORD_HASH");
-				User user = new User(userID, userName, passwordHash);
-				con.close();
-				return user;
+			while (rs.next()) {
+				int accountID = rs.getInt("ACCOUNT_ID");
+				double balance = rs.getDouble("ACCOUNT_BALANCE");
+				Account account = new Account(accountID, userId, balance);
+				results.add(account);
 			}
-			
 			con.close();
+			return results;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -40,14 +44,14 @@ public class UserDAO implements UserDAOInterface {
 	}
 
 	@Override
-	public boolean addUser(String userName, String passwordHash) {
+	public boolean addAccount(int user_id, double balance) {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
-			String sql = "INSERT INTO BANK_USER (USER_NAME, PASSWORD_HASH) VALUES (?, ?)";
+			String sql = "INSERT INTO BANK_ACCOUNT (USER_ID, ACCOUNT_BALANCE) VALUES (?, ?)";
 			p = con.prepareStatement(sql);
-			p.setString(1, userName);
-			p.setString(2, passwordHash);
+			p.setInt(1, user_id);
+			p.setDouble(2, balance);
 			
 			int rowCount = p.executeUpdate();
 			con.close();
@@ -61,15 +65,14 @@ public class UserDAO implements UserDAOInterface {
 	}
 
 	@Override
-	public boolean updateUser(int primaryKey, String userName, String passwordHash) {
+	public boolean updateAccount(int account_id, int user_id, double balance) {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
-			String sql = "UPDATE BANK_USER SET USER_NAME = ?, PASSWORD_HASH = ? WHERE USER_ID = ?";
+			String sql = "UPDATE BANK_ACCOUNT SET ACCOUNT_BALANCE = ? WHERE ACCOUNT_ID = ?";
 			p = con.prepareStatement(sql);
-			p.setString(1, userName);
-			p.setString(2, passwordHash);
-			p.setInt(3, primaryKey);
+			p.setDouble(1, balance);
+			p.setInt(2, account_id);
 			
 			int rowCount = p.executeUpdate();
 			con.close();
@@ -83,13 +86,13 @@ public class UserDAO implements UserDAOInterface {
 	}
 
 	@Override
-	public boolean deleteUser(int primaryKey) {
+	public boolean deleteAccount(int accountId) {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
-			String sql = "DELETE FROM BANK_USER WHERE USER_ID = ?";
+			String sql = "DELETE FROM BANK_ACCOUNT WHERE ACCOUNT_ID = ?";
 			p = con.prepareStatement(sql);
-			p.setInt(1, primaryKey);
+			p.setInt(1, accountId);
 			
 			int rowCount = p.executeUpdate();
 			con.close();
@@ -102,5 +105,21 @@ public class UserDAO implements UserDAOInterface {
 		return false;
 	}
 
-	
+	@Override
+	public void subtractMonthlyFee(double fee) {
+		CallableStatement c = null;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile(filename);
+			String sql = "{call MONTHLY_FEE (?)}";
+			c = con.prepareCall(sql);
+			c.setDouble(1, fee);
+			c.execute();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

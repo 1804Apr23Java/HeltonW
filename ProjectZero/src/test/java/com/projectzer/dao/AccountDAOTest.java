@@ -5,14 +5,16 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import com.projectzero.dao.Account;
+import com.projectzero.dao.AccountDAO;
+import com.projectzero.dao.User;
+import com.projectzero.dao.UserDAO;
 import com.projectzero.util.ConnectionUtil;
 
 public class AccountDAOTest {
@@ -59,7 +61,7 @@ public class AccountDAOTest {
 		int id = userDAO.getUser("u").getUserId();
 
 		for(int i = 0; i < 10; i++) {
-			accountDAO.addAccount(id, 99.00);
+			accountDAO.addAccount(id, 99.01);
 		}
 		
 		List<Account> list = accountDAO.getAccounts(id);
@@ -82,5 +84,14 @@ public class AccountDAOTest {
 		accountDAO.addAccount(testUser.getUserId(), 987.32);
 		List<Account> list = accountDAO.getAccounts(testUser.getUserId());
 		assertTrue(accountDAO.deleteAccount(list.get(0).getAccountId()));
+	}
+	
+	@Test
+	public void testSubtractMonthlyFee() {
+		userDAO.addUser("myUser1", "myPassword1");
+		User testUser = userDAO.getUser("myUser1");
+		accountDAO.addAccount(testUser.getUserId(), 987.32);
+		accountDAO.subtractMonthlyFee(500.25);
+		assertTrue(accountDAO.getAccounts(testUser.getUserId()).get(0).getBalance() == 487.07);
 	}
 }
