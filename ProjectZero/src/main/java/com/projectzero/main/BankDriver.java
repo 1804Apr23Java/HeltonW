@@ -12,6 +12,8 @@ import com.projectzero.dao.Account;
 import com.projectzero.dao.AccountDAO;
 import com.projectzero.dao.User;
 import com.projectzero.dao.UserDAO;
+import com.projectzero.exceptions.UserNameException;
+import com.projectzero.exceptions.UserNotFoundException;
 import com.projectzero.util.ConnectionUtil;
 
 public class BankDriver {
@@ -39,9 +41,9 @@ static Scanner scanner = new Scanner(System.in);
 	
 	private static void processMainMenuKeypress(char userKeypress) {
 		switch(userKeypress) {
-//			case '1':
-//				userLogIn();
-//				break;
+			case '1':
+				userLogIn();
+				break;
 			case '2':
 				createUserAccount();
 				break;
@@ -62,27 +64,45 @@ static Scanner scanner = new Scanner(System.in);
 	}
 	
 	private static void createUserAccount() {
-		System.out.println("Enter user name:");
-		String userName = scanner.next();
-		System.out.println("Enter password:");
-		String password = scanner.next();
-		
-		
+		while(true) {
+			try {
+				System.out.println("Enter user name:");
+				String userName = scanner.next();
+				System.out.println("Enter password:");
+				String password = scanner.next();
+				
+				UserDAO userDao = new UserDAO();
+				userDao.addUser(userName, password);
+				System.out.printf("Created account with username = %s and password = %s\n", userName, password);
+				break;
+			} catch(UserNameException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
-//	private static void userLogIn() {
-//		System.out.println("Enter user name:");
-//		String userName = scanner.next();
-//		System.out.println("Enter password:");
-//		String password = scanner.next();
-//		
-//		/*
-//		 * Needs a boolean check to see if user is found in DB
-//		 * If true, enter user activities menu and pass a User
-//		 * If false, break
-//		 */
-//		userEntersUserActivitiesMenu(currentUser);
-//	}
+	private static void userLogIn() {
+		while(true) {
+			try {
+				System.out.println("Enter user name:");
+				String userName = scanner.next();
+				System.out.println("Enter password:");
+				String password = scanner.next();
+				
+				UserDAO userDao = new UserDAO();
+				
+				User user = userDao.getUser(userName);
+				if(user != null && user.validatePassword(password)) {
+					//userEntersUserActivitiesMenu(user);
+					System.out.println("logged in");
+				} else {
+					System.out.println("Invalid Password, please try again.");
+				}
+			} catch(UserNotFoundException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
 //
 //	private static void userEntersUserActivitiesMenu(User currentUser) {
 //		while(true) {

@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.projectzero.exceptions.UserNameException;
+import com.projectzero.exceptions.UserNotFoundException;
 import com.projectzero.util.ConnectionUtil;
 
 public class UserDAO implements UserDAOInterface {
@@ -15,7 +17,7 @@ public class UserDAO implements UserDAOInterface {
 	private String filename = "connection.properties";
 	
 	@Override
-	public User getUser(String userName) {
+	public User getUser(String userName) throws UserNotFoundException {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
@@ -30,9 +32,10 @@ public class UserDAO implements UserDAOInterface {
 				User user = new User(userID, userName, passwordHash);
 				con.close();
 				return user;
+			} else {
+				con.close();
+				throw new UserNotFoundException("Username is not a valid username, please try again.");
 			}
-			
-			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -42,7 +45,7 @@ public class UserDAO implements UserDAOInterface {
 	}
 
 	@Override
-	public boolean addUser(String userName, String passwordHash) {
+	public boolean addUser(String userName, String passwordHash) throws UserNameException {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
@@ -55,7 +58,8 @@ public class UserDAO implements UserDAOInterface {
 			con.close();
 			return (rowCount == 1) ? true : false;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			if(userName.length() > 50) throw new UserNameException("Username length must be less than 51 characters.");
+			throw new UserNameException("Username already exists, please try a different username.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
