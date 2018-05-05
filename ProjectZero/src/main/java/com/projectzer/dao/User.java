@@ -4,21 +4,21 @@ import java.util.List;
 
 public class User {
 	private int userId;
+	private String userName;
 	private String passwordHash;
-	private boolean isAdmin;
 	private List<Account> userAccounts;
 	
-	public User(int userId, boolean isAdmin, List<Account> userAccounts, String passwordHash) {
+	public User(int userId, String userName, List<Account> userAccounts, String passwordHash) {
 		super();
 		this.userId = userId;
-		this.isAdmin = isAdmin;
+		this.userName = userName;
 		this.userAccounts = userAccounts;
 		this.passwordHash = passwordHash;
 	}
 
-	public User(boolean isAdmin, List<Account> userAccounts, String passwordHash) {
+	public User(String userName, List<Account> userAccounts, String passwordHash) {
 		super();
-		this.isAdmin = isAdmin;
+		this.userName = userName;
 		this.userAccounts = userAccounts;
 		this.passwordHash = passwordHash;
 	}
@@ -26,9 +26,9 @@ public class User {
 	public int getUserId() {
 		return userId;
 	}
-
-	public boolean isAdmin() {
-		return isAdmin;
+	
+	public String getUserName() {
+		return userName;
 	}
 
 	public List<Account> getUserAccounts() {
