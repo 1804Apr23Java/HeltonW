@@ -25,7 +25,7 @@ public class UserDAO implements UserDAOInterface {
 			if(rs.next()) {
 				int userID = rs.getInt("USER_ID");
 				String passwordHash = rs.getString("PASSWORD_HASH");
-				User user = new User(userID, userName, null, passwordHash);
+				User user = new User(userID, userName, passwordHash);
 				con.close();
 				return user;
 			}

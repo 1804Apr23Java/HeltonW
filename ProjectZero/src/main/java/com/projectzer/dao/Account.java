@@ -5,11 +5,17 @@ public class Account {
 	private int userId;
 	private int accountId;
 	
-	public Account(double balance, int userId, int accountId) {
+	public Account(int accountId, int userId, double balance) {
 		super();
-		this.balance = balance;
-		this.userId = userId;
 		this.accountId = accountId;
+		this.userId = userId;
+		this.balance = balance;
+	}
+	
+	public Account(int userId, double balance) {
+		super();
+		this.userId = userId;
+		this.balance = balance;
 	}
 
 	public double getBalance() {
