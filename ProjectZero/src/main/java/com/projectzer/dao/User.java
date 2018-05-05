@@ -34,4 +34,9 @@ public class User {
 	public List<Account> getUserAccounts() {
 		return userAccounts;
 	}
+	
+	public boolean validatePassword(String password) {
+		return (password.equals(this.passwordHash));
+		
+	}
 }
