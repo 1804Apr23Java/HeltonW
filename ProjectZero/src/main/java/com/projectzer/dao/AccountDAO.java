@@ -64,14 +64,43 @@ public class AccountDAO implements AccountDAOInterface {
 	}
 
 	@Override
-	public double updateAccount(int account_id, double balance) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean updateAccount(int account_id, int user_id, double balance) {
+		PreparedStatement p = null;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile(filename);
+			String sql = "UPDATE BANK_ACCOUNT SET ACCOUNT_BALANCE = ? WHERE ACCOUNT_ID = ?";
+			p = con.prepareStatement(sql);
+			p.setDouble(1, balance);
+			p.setInt(2, account_id);
+			
+			int rowCount = p.executeUpdate();
+			con.close();
+			return (rowCount == 1) ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override
-	public boolean updateAccount(int account_id, int user_id, double balance) {
-		// TODO Auto-generated method stub
+	public boolean deleteAccount(int accountId) {
+		PreparedStatement p = null;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile(filename);
+			String sql = "DELETE FROM BANK_ACCOUNT WHERE ACCOUNT_ID = ?";
+			p = con.prepareStatement(sql);
+			p.setInt(1, accountId);
+			
+			int rowCount = p.executeUpdate();
+			con.close();
+			return (rowCount == 1) ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

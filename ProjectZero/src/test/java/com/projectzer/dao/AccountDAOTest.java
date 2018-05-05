@@ -63,7 +63,24 @@ public class AccountDAOTest {
 		}
 		
 		List<Account> list = accountDAO.getAccounts(id);
-		System.out.println(list.toString());
 		assertTrue(list.size() == 10);
+	}
+	
+	@Test
+	public void testUpdateAccount() {
+		userDAO.addUser("myUser1", "myPassword1");
+		User testUser = userDAO.getUser("myUser1");
+		accountDAO.addAccount(testUser.getUserId(), 987.32);
+		List<Account> list = accountDAO.getAccounts(testUser.getUserId());
+		assertTrue(accountDAO.updateAccount(list.get(0).getAccountId(), testUser.getUserId(), 1_000_000.00));
+	}
+	
+	@Test
+	public void testDeleteAccount() {
+		userDAO.addUser("myUser1", "myPassword1");
+		User testUser = userDAO.getUser("myUser1");
+		accountDAO.addAccount(testUser.getUserId(), 987.32);
+		List<Account> list = accountDAO.getAccounts(testUser.getUserId());
+		assertTrue(accountDAO.deleteAccount(list.get(0).getAccountId()));
 	}
 }

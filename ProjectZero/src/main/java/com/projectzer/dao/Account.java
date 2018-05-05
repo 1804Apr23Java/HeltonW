@@ -4,7 +4,7 @@ public class Account {
 	private double balance;
 	private int userId;
 	private int accountId;
-	
+
 	public Account(int accountId, int userId, double balance) {
 		super();
 		this.accountId = accountId;
@@ -40,5 +40,10 @@ public class Account {
 	
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
+	}
+	
+	@Override
+	public String toString() {
+		return "Account [balance=" + balance + ", userId=" + userId + ", accountId=" + accountId + "]";
 	}
 }
