@@ -13,7 +13,7 @@ public class ConnectionUtil {
 		Properties prop = new Properties();
 		InputStream in = new FileInputStream(filename);
 		prop.load(in);
-		
+
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
 		String password = prop.getProperty("password");

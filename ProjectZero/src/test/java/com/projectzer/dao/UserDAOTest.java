@@ -6,10 +6,16 @@ import org.junit.Test;
 
 public class UserDAOTest {
 
-	private static final UserDAO u = new UserDAO();
+	private static final UserDAO userDAO = new UserDAO();
 	
 	@Test
 	public void testAddUser() {
-		assertTrue(u.addUser("myUserName", "This is Password"));
+		assertTrue(userDAO.addUser("myUserName", "This is Password"));
+	}
+	
+	@Test
+	public void testGetUser() {
+		User userUnderTest = userDAO.getUser("myUserName");
+		assertTrue(userUnderTest.getUserName().equals("myUserName"));
 	}
 }
