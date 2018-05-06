@@ -16,13 +16,11 @@ public class MenuStrings {
 			"2. Create New Account\n" +
 			"\n0. User Log Out";
 	
-	public static final String ACCOUNT_ACCESS_MENU="*** Welcome to OurBank! ***\n" +
-			"***       Account Access      ***\n" +
+	public static final String ACCOUNT_ACCESS_MENU="***       Account Access      ***\n" +
 			"Choose an option to continue.\n" +
-			"1. Check Account Balance\n" +
-			"2. Make a Deposit\n" +
-			"3. Make a Withdrawal\n" +
-			"4. Close This Account\n" +
+			"1. Make a Deposit\n" +
+			"2. Make a Withdrawal\n" +
+			"3. Close This Account\n" +
 			"\n0. Back to User Activities";
 	
 	public static final String ADMIN_MENU="*** Welcome to OurBank! ***\n" +

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.projectzero.exceptions.AccountException;
 import com.projectzero.util.ConnectionUtil;
 
 public class AccountDAO implements AccountDAOInterface {
@@ -44,7 +45,7 @@ public class AccountDAO implements AccountDAOInterface {
 	}
 
 	@Override
-	public boolean addAccount(int user_id, double balance) {
+	public boolean addAccount(int user_id, double balance) throws AccountException {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
@@ -57,7 +58,7 @@ public class AccountDAO implements AccountDAOInterface {
 			con.close();
 			return (rowCount == 1) ? true : false;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AccountException("Problem with adding account");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +66,7 @@ public class AccountDAO implements AccountDAOInterface {
 	}
 
 	@Override
-	public boolean updateAccount(int account_id, int user_id, double balance) {
+	public boolean updateAccount(int account_id, int user_id, double balance) throws AccountException {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
@@ -78,7 +79,7 @@ public class AccountDAO implements AccountDAOInterface {
 			con.close();
 			return (rowCount == 1) ? true : false;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AccountException("Couldnt update account.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

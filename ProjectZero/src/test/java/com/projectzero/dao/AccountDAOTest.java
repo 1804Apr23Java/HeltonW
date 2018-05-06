@@ -17,6 +17,7 @@ import com.projectzero.dao.Account;
 import com.projectzero.dao.AccountDAO;
 import com.projectzero.dao.User;
 import com.projectzero.dao.UserDAO;
+import com.projectzero.exceptions.AccountException;
 import com.projectzero.exceptions.UserNameException;
 import com.projectzero.exceptions.UserNotFoundException;
 import com.projectzero.util.ConnectionUtil;
@@ -57,12 +58,19 @@ public class AccountDAOTest {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
+		} catch (AccountException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}		
 	}
 	
 	@Test
 	public void testAddFakeAccount() {
-		assertFalse(accountDAO.addAccount(999, 32.32));
+		try {
+			assertFalse(accountDAO.addAccount(999, 32.32));
+		} catch (AccountException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
@@ -81,6 +89,8 @@ public class AccountDAOTest {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
+		} catch (AccountException e) {
+			e.printStackTrace();
 		}		
 	}
 	
@@ -95,6 +105,8 @@ public class AccountDAOTest {
 		} catch (UserNameException e) {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
+			e.printStackTrace();
+		} catch (AccountException e) {
 			e.printStackTrace();
 		}		
 	}
@@ -111,6 +123,8 @@ public class AccountDAOTest {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
+		} catch (AccountException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -125,7 +139,8 @@ public class AccountDAOTest {
 		} catch (UserNameException e) {
 			e.printStackTrace();
 		} catch (UserNotFoundException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AccountException e) {
 			e.printStackTrace();
 		}
 		
