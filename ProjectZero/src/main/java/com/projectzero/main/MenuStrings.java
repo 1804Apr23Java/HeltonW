@@ -20,7 +20,7 @@ public class MenuStrings {
 			"Choose an option to continue.\n" +
 			"1. Make a Deposit\n" +
 			"2. Make a Withdrawal\n" +
-			"3. Close This Account\n" +
+			"3. Close An Account\n" +
 			"\n0. Back to User Activities";
 	
 	public static final String ADMIN_MENU="*** Welcome to OurBank! ***\n" +

@@ -182,6 +182,7 @@ static Scanner scanner = new Scanner(System.in);
 	private static void processAccountActiviesKeypress(User currentUser, char accountUserKeypress) {
 		AccountDAO accountDAO = new AccountDAO();
 		List<Account> list;
+		boolean foundAccount = false;
 		switch(accountUserKeypress) {		
 			case '1':
 				System.out.println("These are all of your accounts:");
@@ -198,6 +199,7 @@ static Scanner scanner = new Scanner(System.in);
 						
 						for(Account account : list) {
 							if(intAccountId == account.getAccountId()) {
+								foundAccount = true;
 								double amount = getCurrency("deposit");
 								if(amount < 0) break;
 								double currBalance = account.getBalance() + amount;
@@ -206,11 +208,15 @@ static Scanner scanner = new Scanner(System.in);
 									accountDAO.updateAccount(intAccountId, currentUser.getUserId(), currBalance);
 									System.out.printf("Successfully deposited $%.2f in account %d\n", amount, intAccountId);
 									System.out.printf("Current balance for account %d is $%.2f\n", account.getAccountId(), currBalance);
+									
 								} catch(AccountException e) {
 									System.out.println("Please enter a value less than 1 trillion to deposit.");
 								}
 								break;
 							}
+						}
+						if(!foundAccount) {
+							System.out.println("No account with that ID found.");
 						}
 						break;
 					} catch(NumberFormatException e) {
@@ -231,8 +237,10 @@ static Scanner scanner = new Scanner(System.in);
 						if(accountID.equals("0")) break;
 						intAccountId = Integer.parseInt(accountID);
 						
+						
 						for(Account account : list) {
 							if(intAccountId == account.getAccountId()) {
+								foundAccount = true;
 								double amount = getCurrency("withdraw");
 								if(amount < 0) break;
 								double currBalance = account.getBalance() - amount;
@@ -252,6 +260,9 @@ static Scanner scanner = new Scanner(System.in);
 								break;
 							}
 						}
+						if(!foundAccount) {
+							System.out.println("No account with that ID found.");
+						}
 						break;
 					} catch(NumberFormatException e) {
 						System.out.println("Invalid account id, please enter the correct id or 0 to exit");
@@ -259,10 +270,42 @@ static Scanner scanner = new Scanner(System.in);
 				}
 				break;
 			case '3':
+				System.out.println("These are all of your accounts:");
+				list = accountDAO.getAccounts(currentUser.getUserId());
+				for(Account a : list) System.out.println(a.toString());
 				
+				while(true) {
+					System.out.println("You may only delete accounts with balance of 0.");
+					System.out.println("Please enter account ID of account you would like to delete or 0 to exit:");
+					String accountID = scanner.next();
+					int intAccountId = -1;
+					try {
+						if(accountID.equals("0")) break;
+						intAccountId = Integer.parseInt(accountID);						
+						
+						for(Account account : list) {
+							if(intAccountId == account.getAccountId()) {
+								foundAccount = true;
+								if(account.getBalance() == 0) {
+									accountDAO.deleteAccount(intAccountId);
+									System.out.println("Account " + intAccountId + " successfully deleted.");
+								} else {
+									System.out.println("To delete an account, the balance must be 0.");
+								}
+								break;
+							}
+						}
+						if(!foundAccount) {
+							System.out.println("No account with that ID found.");
+						}
+						break;
+					} catch(NumberFormatException e) {
+						System.out.println("Invalid account id, please enter the correct id or 0 to exit");
+					}
+				}
+				break;
 			default:
-		}
-		
+		}		
 	}
 	
 	private static double getCurrency(String action) {
