@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.projectzero.dao.Account;
+import com.projectzero.dao.AccountDAO;
 import com.projectzero.dao.User;
 import com.projectzero.dao.UserDAO;
 import com.projectzero.exceptions.AccountException;
@@ -35,12 +36,27 @@ public class SuperUserOptions {
 				case '4':
 					superUserDeletesUser();
 					break;
+				case '5':
+					superUserRunsMonthlyFee();
+					break;
 				default:
 					System.out.println("bad input, try again");
 			}				
 		}		
 	}
 	
+	private static void superUserRunsMonthlyFee() {
+		AccountDAO accountDAO = new AccountDAO();
+		System.out.println("What is the fee for this month?");
+		String fee = scanner.next();
+		try {
+			accountDAO.subtractMonthlyFee(Double.parseDouble(fee));
+			System.out.println("All users charged for the last month.");
+		} catch(NumberFormatException e) {
+			System.out.println("Fee must be a valid number in the form XXXX.XX.");
+		}
+	}
+
 	private static void superUserViewsAllUsers() {
 		System.out.println("All bank users:");
 		UserDAO userDAO = new UserDAO();
