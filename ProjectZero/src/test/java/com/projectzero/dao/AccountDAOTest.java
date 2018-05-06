@@ -41,11 +41,9 @@ public class AccountDAOTest {
 			p.executeUpdate();
 			
 			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch(Exception e) {
+			assertTrue(false);
+		} 
 	}
 	
 	@Test
@@ -54,23 +52,20 @@ public class AccountDAOTest {
 			userDAO.addUser("myUser1", "myPassword1");
 			User testUser = userDAO.getUser("myUser1");
 			assertTrue(accountDAO.addAccount(testUser.getUserId(), 987.32));
-		} catch (UserNameException e) {
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (AccountException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		} catch(Exception e) {
+			assertTrue(false);
+		} 
+		
 	}
 	
 	@Test
 	public void testAddFakeAccount() {
 		try {
 			assertFalse(accountDAO.addAccount(999, 32.32));
-		} catch (AccountException e) {
-			e.printStackTrace();
-		}
+		}  catch(Exception e) {
+			//
+			assertTrue(true);
+		} 
 	}
 	
 	@Test
@@ -85,13 +80,9 @@ public class AccountDAOTest {
 			
 			List<Account> list = accountDAO.getAccounts(id);
 			assertTrue(list.size() == 10);
-		} catch (UserNameException e) {
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (AccountException e) {
-			e.printStackTrace();
-		}		
+		}  catch(Exception e) {
+			assertTrue(false);
+		} 	
 	}
 	
 	@Test
@@ -102,13 +93,9 @@ public class AccountDAOTest {
 			accountDAO.addAccount(testUser.getUserId(), 987.32);
 			List<Account> list = accountDAO.getAccounts(testUser.getUserId());
 			assertTrue(accountDAO.updateAccount(list.get(0).getAccountId(), testUser.getUserId(), 1_000_000.00));
-		} catch (UserNameException e) {
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (AccountException e) {
-			e.printStackTrace();
-		}		
+		}  catch(Exception e) {
+			assertTrue(false);
+		} 	
 	}
 	
 	@Test
@@ -119,13 +106,9 @@ public class AccountDAOTest {
 			accountDAO.addAccount(testUser.getUserId(), 987.32);
 			List<Account> list = accountDAO.getAccounts(testUser.getUserId());
 			assertTrue(accountDAO.deleteAccount(list.get(0).getAccountId()));
-		} catch (UserNameException e) {
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (AccountException e) {
-			e.printStackTrace();
-		}
+		}  catch(Exception e) {
+			assertTrue(false);
+		} 
 	}
 	
 	@Test
@@ -133,16 +116,15 @@ public class AccountDAOTest {
 		try {
 			userDAO.addUser("myUser1", "myPassword1");
 			User testUser = userDAO.getUser("myUser1");
-			accountDAO.addAccount(testUser.getUserId(), 987.32);
-			accountDAO.subtractMonthlyFee(500.25);
-			assertTrue(accountDAO.getAccounts(testUser.getUserId()).get(0).getBalance() == 487.07);
-		} catch (UserNameException e) {
-			e.printStackTrace();
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (AccountException e) {
-			e.printStackTrace();
-		}
-		
+			double bal = 900.70;
+			accountDAO.addAccount(testUser.getUserId(), bal);
+			double a = 100.0;
+			bal -= a;
+			accountDAO.subtractMonthlyFee(a);
+			assertTrue(accountDAO.getAccounts(testUser.getUserId()).get(0).getBalance() == bal);
+		}  catch(Exception e) {
+			System.out.println("this is the problem");
+			assertTrue(false);
+		} 
 	}
 }

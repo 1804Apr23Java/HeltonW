@@ -111,7 +111,7 @@ public class AccountDAO implements AccountDAOInterface {
 		CallableStatement c = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
-			String sql = "{call MONTHLY_FEE (?)}";
+			String sql = "{call MONTHLY_FEE(?)}";
 			c = con.prepareCall(sql);
 			c.setDouble(1, fee);
 			c.execute();
