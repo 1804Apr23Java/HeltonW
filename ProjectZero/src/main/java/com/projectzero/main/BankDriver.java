@@ -181,10 +181,11 @@ static Scanner scanner = new Scanner(System.in);
 	
 	private static void processAccountActiviesKeypress(User currentUser, char accountUserKeypress) {
 		AccountDAO accountDAO = new AccountDAO();
-		switch(accountUserKeypress) {
+		List<Account> list;
+		switch(accountUserKeypress) {		
 			case '1':
 				System.out.println("These are all of your accounts:");
-				List<Account> list = accountDAO.getAccounts(currentUser.getUserId());
+				list = accountDAO.getAccounts(currentUser.getUserId());
 				for(Account a : list) System.out.println(a.toString());
 				
 				while(true) {
@@ -218,8 +219,47 @@ static Scanner scanner = new Scanner(System.in);
 				}
 				break;
 			case '2':
+				System.out.println("These are all of your accounts:");
+				list = accountDAO.getAccounts(currentUser.getUserId());
+				for(Account a : list) System.out.println(a.toString());
+				
+				while(true) {
+					System.out.println("Please enter account ID of account you would like to withdraw from or 0 to exit:");
+					String accountID = scanner.next();
+					int intAccountId = -1;
+					try {
+						if(accountID.equals("0")) break;
+						intAccountId = Integer.parseInt(accountID);
+						
+						for(Account account : list) {
+							if(intAccountId == account.getAccountId()) {
+								double amount = getCurrency("withdraw");
+								if(amount < 0) break;
+								double currBalance = account.getBalance() - amount;
+								
+								try {
+									if(currBalance >= 0) {
+										accountDAO.updateAccount(intAccountId, currentUser.getUserId(), currBalance);
+										System.out.printf("Successfully withdrew $%.2f from account %d\n", amount, intAccountId);
+										System.out.printf("Current balance for account %d is $%.2f\n", account.getAccountId(), currBalance);
+									} else {
+										System.out.println("Insufficient funds for withdrawal.");
+									}
+									
+								} catch(AccountException e) {
+									System.out.println("Please enter a value less than 1 trillion to deposit.");
+								}
+								break;
+							}
+						}
+						break;
+					} catch(NumberFormatException e) {
+						System.out.println("Invalid account id, please enter the correct id or 0 to exit");
+					}
+				}
 				break;
 			case '3':
+				
 			default:
 		}
 		
@@ -230,9 +270,9 @@ static Scanner scanner = new Scanner(System.in);
 		String currencyString = scanner.next();
 		
 		while(!currencyString.matches("[0-9]+\\.[0-9]{2}")) {
-			System.out.println("Bad input!  Please enter a currency amount 'XXXX.XX', or '0' to exit.");
-			currencyString = scanner.next();
 			if(currencyString.equals("0")) return -1.0;
+			System.out.println("Bad input!  Please enter a currency amount 'XXXX.XX', or '0' to exit.");
+			currencyString = scanner.next();			
 		}
 		
 		return Double.parseDouble(currencyString);
