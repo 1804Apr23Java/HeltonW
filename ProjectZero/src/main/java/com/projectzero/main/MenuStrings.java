@@ -6,11 +6,10 @@ public class MenuStrings {
 			"Choose an option to continue.\n" +
 			"1. User Log In\n" +
 			"2. Create User Account\n" +
-			"9. Admin Log In\n" +
+			"9. Superuser Log In\n" +
 			"\n0. Exit OurBank";
 	
-	public static final String USER_ACTIVITIES_MENU="*** Welcome to OurBank! ***\n" +
-			"***    User Activities   ***\n" +
+	public static final String USER_ACTIVITIES_MENU="***    User Activities   ***\n" +
 			"Choose an option to continue.\n" +
 			"1. Check Accounts\n" +
 			"2. Create New Account\n" +
@@ -23,14 +22,13 @@ public class MenuStrings {
 			"3. Close An Account\n" +
 			"\n0. Back to User Activities";
 	
-	public static final String ADMIN_MENU="*** Welcome to OurBank! ***\n" +
-			"***       ADMIN MENU      ***\n" +
+	public static final String SUPERUSER_MENU="***       SUPERUSER MENU      ***\n" +
 			"Choose an option to continue.\n" +
 			"1. VIEW ALL USERS\n" +
 			"2. CREATE NEW USER\n" +
 			"3. UPDATE A USER\n" +
 			"4. DELETE A USER\n" +
-			"\n0. ADMIN LOG OUT";
+			"\n0. SUPERUSER LOG OUT";
 	
 	public static final String ANOTHER_OPTION_PROMPT = "Would you like to make another transaction?\n" +
 			"1. Yes\n" +

@@ -9,6 +9,6 @@ public interface UserDAOInterface {
 	public User getUser(String userName) throws UserNotFoundException;
 	public List<User> getAllUsers();
 	public boolean addUser(String userName, String passwordHash) throws UserNameException;
-	public boolean updateUser(int primaryKey, String userName, String passwordHash);
+	public boolean updateUser(int primaryKey, String userName, String passwordHash) throws UserNameException;
 	public boolean deleteUser(int primaryKey);
 }

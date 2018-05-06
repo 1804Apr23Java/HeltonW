@@ -26,6 +26,10 @@ public class User {
 		return userName;
 	}
 	
+	public String getPassword() {
+		return userName;
+	}
+	
 	public boolean validatePassword(String password) {
 		return (password.equals(this.passwordHash));
 	}

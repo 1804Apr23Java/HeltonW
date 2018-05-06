@@ -67,7 +67,7 @@ public class UserDAO implements UserDAOInterface {
 	}
 
 	@Override
-	public boolean updateUser(int primaryKey, String userName, String passwordHash) {
+	public boolean updateUser(int primaryKey, String userName, String passwordHash) throws UserNameException {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
@@ -81,7 +81,7 @@ public class UserDAO implements UserDAOInterface {
 			con.close();
 			return (rowCount == 1) ? true : false;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new UserNameException("Username must be unique and less than 51 characters, password must be less than 51 characters.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

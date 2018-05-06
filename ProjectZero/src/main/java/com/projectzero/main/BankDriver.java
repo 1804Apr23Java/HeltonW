@@ -2,10 +2,14 @@ package com.projectzero.main;
 
 import static com.projectzero.main.MenuStrings.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 import com.projectzero.dao.Account;
@@ -49,19 +53,38 @@ static Scanner scanner = new Scanner(System.in);
 				createUserAccount();
 				break;
 			case '9':
-				adminLogIn();
+				superuserLogIn();
 				break;
 			default:
 				System.out.println("bad input, try again");
 		}
 	}
 
-	private static void adminLogIn() {
-		// ask for username and password
-		// read from admin.properties
-		// if yes, go to userEntersAdminMenu
-		// if no, print line and go back to main menu
+	private static void superuserLogIn() {
+		System.out.println("Enter superuser name:");
+		String superUserName = scanner.next();
+		System.out.println("Enter superuser password:");
+		String superUserPassword = scanner.next();
 		
+		Properties prop = new Properties();
+		InputStream in;
+		try {
+			in = new FileInputStream("superuser.properties");
+			prop.load(in);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		String validUsername = prop.getProperty("superusername");
+		String validPassword = prop.getProperty("superpassword");
+		
+		if(superUserName.equals(validUsername) && superUserPassword.equals(validPassword)){
+			SuperUserOptions.userEntersSuperUserMenu();
+		} else {
+			System.out.println("Invalid superuser credentials.");
+		}		
 	}
 	
 	private static void createUserAccount() {

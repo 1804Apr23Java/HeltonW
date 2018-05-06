@@ -101,7 +101,11 @@ public class UserDAOTest {
 	
 	@Test
 	public void testUpdateFakeUser() {
-		assertFalse(userDAO.updateUser(400, "fakeUserName", "fakePass"));
+		try {
+			assertFalse(userDAO.updateUser(400, "fakeUserName", "fakePass"));
+		} catch (UserNameException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
