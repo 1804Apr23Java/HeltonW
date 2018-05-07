@@ -5,11 +5,9 @@ import static com.projectzero.main.MenuStrings.SUPERUSER_MENU;
 import java.util.List;
 import java.util.Scanner;
 
-import com.projectzero.dao.Account;
 import com.projectzero.dao.AccountDAO;
 import com.projectzero.dao.User;
 import com.projectzero.dao.UserDAO;
-import com.projectzero.exceptions.AccountException;
 import com.projectzero.exceptions.UserNameException;
 
 public class SuperUserOptions {
@@ -40,7 +38,7 @@ public class SuperUserOptions {
 					superUserRunsMonthlyFee();
 					break;
 				default:
-					System.out.println("bad input, try again");
+					System.out.println("Bad input, please try again.");
 			}				
 		}		
 	}
@@ -171,7 +169,7 @@ public class SuperUserOptions {
 				System.out.println("No user with that id exists.");
 			}
 		} catch(NumberFormatException e) {
-			System.out.println("Invalid user Id format.");
+			System.out.println("Invalid user id format.");
 		}
 	}
 }

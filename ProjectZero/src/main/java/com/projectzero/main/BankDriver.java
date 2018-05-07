@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
@@ -19,7 +17,6 @@ import com.projectzero.dao.UserDAO;
 import com.projectzero.exceptions.AccountException;
 import com.projectzero.exceptions.UserNameException;
 import com.projectzero.exceptions.UserNotFoundException;
-import com.projectzero.util.ConnectionUtil;
 
 public class BankDriver {
 
@@ -56,7 +53,7 @@ static Scanner scanner = new Scanner(System.in);
 				superuserLogIn();
 				break;
 			default:
-				System.out.println("bad input, try again");
+				System.out.println("Bad input, please try again.");
 		}
 	}
 
@@ -177,12 +174,14 @@ static Scanner scanner = new Scanner(System.in);
 					} else {
 						break;
 					}
-				}
-				
+				}				
 				break;
 			case '2':
 				System.out.println("Creating account");
 				double amount = getCurrency("deposit");
+				if(amount < 0) {
+					break;
+				}
 				try {
 					accountDAO.addAccount(currentUser.getUserId(), amount);
 					System.out.println("You have successfully created an account!");
@@ -198,7 +197,7 @@ static Scanner scanner = new Scanner(System.in);
 				}				
 				break;
 			default:
-				System.out.println("bad input");
+				System.out.println("Bad input...");
 				System.out.println("Press any key to continue...");
 				scanner.next();
 		}

@@ -134,6 +134,4 @@ public class UserDAO implements UserDAOInterface {
 		}
 		return null;
 	}
-
-	
 }
