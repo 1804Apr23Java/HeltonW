@@ -52,7 +52,7 @@ static Scanner scanner = new Scanner(System.in);
 			case '2':
 				createUserAccount();
 				break;
-			case '9':
+			case '3':
 				superuserLogIn();
 				break;
 			default:
@@ -155,8 +155,10 @@ static Scanner scanner = new Scanner(System.in);
 					System.out.println("No accounts found for this user."); 
 				} else {
 					System.out.println("Active accounts for user " + currentUser.getUserName() + ":");
+					
+					int i = 1;
 					for(Account account : accountList) {
-						System.out.println(account.toString());
+						System.out.println(account.toString(i++));
 					}
 					System.out.println();
 				}
@@ -206,11 +208,15 @@ static Scanner scanner = new Scanner(System.in);
 		AccountDAO accountDAO = new AccountDAO();
 		List<Account> list;
 		boolean foundAccount = false;
+		int i;
+		
 		switch(accountUserKeypress) {		
 			case '1':
 				System.out.println("These are all of your accounts:");
 				list = accountDAO.getAccounts(currentUser.getUserId());
-				for(Account a : list) System.out.println(a.toString());
+				
+				i = 1;
+				for(Account a : list) System.out.println(a.toString(i++));
 				
 				while(true) {
 					System.out.println("Please enter account ID of account you would like to deposit into or 0 to exit:");
@@ -234,23 +240,27 @@ static Scanner scanner = new Scanner(System.in);
 									
 								} catch(AccountException e) {
 									System.out.println("Please enter a value less than 1 trillion to deposit.");
+									System.out.println(e.getMessage());
 								}
 								break;
 							}
 						}
+						
 						if(!foundAccount) {
 							System.out.println("No account with that ID found.");
 						}
-						break;
 					} catch(NumberFormatException e) {
 						System.out.println("Invalid account id, please enter the correct id or 0 to exit");
 					}
 				}
+				
 				break;
 			case '2':
 				System.out.println("These are all of your accounts:");
 				list = accountDAO.getAccounts(currentUser.getUserId());
-				for(Account a : list) System.out.println(a.toString());
+				
+				i = 1;
+				for(Account a : list) System.out.println(a.toString(i++));
 				
 				while(true) {
 					System.out.println("Please enter account ID of account you would like to withdraw from or 0 to exit:");
@@ -295,7 +305,9 @@ static Scanner scanner = new Scanner(System.in);
 			case '3':
 				System.out.println("These are all of your accounts:");
 				list = accountDAO.getAccounts(currentUser.getUserId());
-				for(Account a : list) System.out.println(a.toString());
+				
+				i = 1;
+				for(Account a : list) System.out.println(a.toString(i++));
 				
 				while(true) {
 					System.out.println("You may only delete accounts with balance of 0.");
@@ -331,11 +343,12 @@ static Scanner scanner = new Scanner(System.in);
 		}		
 	}
 	
-	private static double getCurrency(String action) {
+	static double getCurrency(String action) {
 		System.out.println("Please enter amount you wish to " + action + " in the form 'XXXX.XX', or '0' to exit.");
 		String currencyString = scanner.next();
+		if(currencyString.equals("0")) return -1.0;
 		
-		while(!currencyString.matches("[0-9]+\\.[0-9]{2}")) {
+		while(!currencyString.matches("[0-9]+\\.?[0-9]{0,2}")) {
 			if(currencyString.equals("0")) return -1.0;
 			System.out.println("Bad input!  Please enter a currency amount 'XXXX.XX', or '0' to exit.");
 			currencyString = scanner.next();			

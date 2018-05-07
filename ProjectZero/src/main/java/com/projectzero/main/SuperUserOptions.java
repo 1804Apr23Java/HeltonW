@@ -50,7 +50,14 @@ public class SuperUserOptions {
 		System.out.println("What is the fee for this month?");
 		String fee = scanner.next();
 		try {
-			accountDAO.subtractMonthlyFee(Double.parseDouble(fee));
+			
+			double feeDouble = Double.parseDouble(fee);
+			if(feeDouble < 0) {
+				System.out.println("Fee must be larger than or equal to zero");
+				return;
+			}
+			
+			accountDAO.subtractMonthlyFee(feeDouble);
 			System.out.println("All users charged for the last month.");
 		} catch(NumberFormatException e) {
 			System.out.println("Fee must be a valid number in the form XXXX.XX.");
@@ -61,8 +68,10 @@ public class SuperUserOptions {
 		System.out.println("All bank users:");
 		UserDAO userDAO = new UserDAO();
 		List<User> list = userDAO.getAllUsers();
+		int i = 1;
+		
 		for(User u : list) {
-			System.out.println(u.toString());
+			System.out.println(u.toString(i++));
 		}
 	}
 	
@@ -90,8 +99,10 @@ public class SuperUserOptions {
 		System.out.println("All bank users:");
 		UserDAO userDAO = new UserDAO();
 		List<User> list = userDAO.getAllUsers();
+		
+		int i = 1;
 		for(User u : list) {
-			System.out.println(u.toString());
+			System.out.println(u.toString(i++));
 		}
 		
 		System.out.println("Please enter the userid of the user you want to update:");
@@ -134,8 +145,10 @@ public class SuperUserOptions {
 		System.out.println("All bank users:");
 		UserDAO userDAO = new UserDAO();
 		List<User> list = userDAO.getAllUsers();
+		
+		int i = 1;
 		for(User u : list) {
-			System.out.println(u.toString());
+			System.out.println(u.toString(i++));
 		}
 		
 		System.out.println("Please enter the userid of the user you want to delete:");

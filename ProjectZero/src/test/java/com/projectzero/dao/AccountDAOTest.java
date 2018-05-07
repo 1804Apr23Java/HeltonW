@@ -27,6 +27,9 @@ public class AccountDAOTest {
 	public static final AccountDAO accountDAO = new AccountDAO();
 	public static final UserDAO userDAO = new UserDAO();
 	
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+	
 	@Before
 	public void initTest() {
 		PreparedStatement p = null;
@@ -61,11 +64,10 @@ public class AccountDAOTest {
 	@Test
 	public void testAddFakeAccount() {
 		try {
-			assertFalse(accountDAO.addAccount(999, 32.32));
-		}  catch(Exception e) {
-			//
+			accountDAO.addAccount(999, 32.32);
+		} catch(Exception e) {
 			assertTrue(true);
-		} 
+		}
 	}
 	
 	@Test

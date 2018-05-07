@@ -33,9 +33,13 @@ public class User {
 	public boolean validatePassword(String password) {
 		return (password.equals(this.passwordHash));
 	}
-
+	
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", passwordHash=" + passwordHash + "]";
+		return "User : [UserId = " + userId + "] and  [Username = " + userName + "]";
+	}
+	
+	public String toString(int i) {
+		return "User #" + i + " : [UserId = " + userId + "] and  [Username = " + userName + "]";
 	}
 }
