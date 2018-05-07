@@ -6,7 +6,7 @@ public class MenuStrings {
 			"Choose an option to continue.\n" +
 			"1. User Log In\n" +
 			"2. Create User Account\n" +
-			"9. Superuser Log In\n" +
+			"3. Superuser Log In\n" +
 			"0. Exit OurBank";
 	
 	public static final String USER_ACTIVITIES_MENU="***    User Activities   ***\n" +
@@ -28,7 +28,7 @@ public class MenuStrings {
 			"2. CREATE NEW USER\n" +
 			"3. UPDATE A USER\n" +
 			"4. DELETE A USER\n" +
-			"5. RUN MONTHLY FEE CHECK\n" +
+			"5. DEDUCT MONTHLY FEE FROM ACCOUNTS\n" +
 			"\n0. SUPERUSER LOG OUT";
 	
 	public static final String ANOTHER_OPTION_PROMPT = "Would you like to make another transaction?\n" +

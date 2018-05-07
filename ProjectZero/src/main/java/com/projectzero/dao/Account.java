@@ -44,6 +44,10 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return "Account [balance=" + balance + ", userId=" + userId + ", accountId=" + accountId + "]";
+		return "Account : [accountId = " + accountId + "] and [balance = " + balance + "] and [UserId = " + userId +"]";
+	}
+	
+	public String toString(int i) {
+		return "Account #" + i + " : [accountId = " + accountId + "] and [balance = " + balance + "] and [UserId = " + userId +"]";
 	}
 }

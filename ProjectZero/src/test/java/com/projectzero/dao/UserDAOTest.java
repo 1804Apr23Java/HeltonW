@@ -55,9 +55,9 @@ public class UserDAOTest {
 	public void testAddDuplicateUser() {
 		try {
 			userDAO.addUser("myUserName1", "This is Password");
-			assertFalse(userDAO.addUser("myUserName1", "This is Password"));
+			userDAO.addUser("myUserName1", "This is Password");
 		} catch (UserNameException e) {
-			e.printStackTrace();
+			assertTrue(true);
 		}		
 	}
 	
@@ -78,9 +78,9 @@ public class UserDAOTest {
 	@Test
 	public void testGetFakeUser() {
 		try {
-			assertNull(userDAO.getUser("myFakeUser"));
+			userDAO.getUser("myFakeUser");
 		} catch (UserNotFoundException e) {
-			e.printStackTrace();
+			assertTrue(true);
 		}
 	}
 	
