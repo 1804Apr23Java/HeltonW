@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: gray;
+}
+
+a{
+    color: blue;
+    text-decoration: none;
+}
+
+a:visited{
+    color: blue;
+    text-decoration: none;
+}
+
+.selected{
+    color: red;
+}
+
+nav{
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav a{
+    margin: 10px;
+}
+
+#main-content{
+    width: 100%;
+    height: 100%;
+    background: darkgray;
+}
+
+#haunted-house{
+    width: 80%;
+    margin-left: 10%;
+    margin-top:30px;
+}
+#cabin{
+    width: 20%;
+    margin-left: 10%;
+    margin-top:30px;
+}
+#maxO{
+    width: 20%;
+    margin-left: 10%;
+    margin-top:30px;
+}

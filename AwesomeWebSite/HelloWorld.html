@@ -1,0 +1,82 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <title>Hello World</title>
+        <meta charset="UTF-8"/>
+        <style>
+            p { background-color:#4a73ff;
+                margin:20px;
+                padding:30px;
+                border: 5pt;
+            }
+        </style>
+        <link rel="stylesheet" href="myCoolStyles.css"/>
+    </head>
+    <body>
+
+        <h1 class="bobRoss">this is a large heading</h1>
+        <h6>this is a small heading</h6>
+
+        <div class="bobRoss">
+            <p>
+                Let's do that again. Just let go - and fall like a little waterfall. 
+                You better get your coat out, this is going to be a cold painting. 
+                You're meant to have fun in life. 
+            </p>
+            <p>
+                Maybe there's a happy little waterfall happening over here. 
+                See there how easy that is. These little son of a guns hide in your brush 
+                and you just have to push them out. Talk to trees, look at the birds. 
+                Whatever it takes. You can't have light without dark. 
+                You can't know happiness unless you've known sorrow. Be brave.
+            </p>
+        </div>
+
+        <div>
+            <h3>Hemingway Cats:</h3>
+            <img id="hemingwayCat" src="hemingwayCat.jpg" alt="so many toes" width="150" height="200"/>
+            <a href="https://www.hemingwayhome.com/cats/">find out more</a>
+        </div>
+
+        <div class="bobRoss">
+            <form class="myCoolForm" method="POST" action="Congrats.html">
+                some text: <input type="text" name="text1"/>
+                <br><br>
+                a color: <input type="color" name="color1"/>
+                <br><br>
+                a number: <input type="number" name="num1"/>
+                <br><br>
+                a text area: <textarea name="text1" cols="30" rows="10">your text here</textarea>
+                <br><br>
+                a dropdown: 
+                <br>
+                <select name="penguins">
+                        <option value="emperor" selected>Emperor</option>
+                        <option value="galapagos" >Galapagos</option>
+                        <option value="macaroni" >Macaroni</option>
+                </select>
+                <br>
+                <br>
+                radio buttons: <br>
+                <input type="radio" name="penguinType" value="emperor" checked>Emperor</input><br>
+                <input type="radio" name="penguinType" value="galapagos" >Galapagos</input><br>
+                <input type="radio" name="penguinType" value="macaroni" >Macaroni</input>
+                <br>
+                <br>
+                
+                <!--new from html5-->
+                <input list="browsers"/>
+                <datalist id="browsers">
+                    <option value="chrome"/>
+                    <option value="firefox"/>
+                    <option value="tor"/>
+                </datalist>
+
+                <!--submits the form data to the handler-->
+                <!--if a form element does not have a name, it will not be submitted-->
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+
+    </body>
+</html>
