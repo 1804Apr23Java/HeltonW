@@ -34,17 +34,22 @@
 				<div class="col-md-8">
         <p class="pt-4">Some horror movies are great movies first, and horror movies second.  These films are good enough in their own right to be both entertaining and quality movies.  Sometimes demonic spirits, murderous slashers or disgusting zombies are coupled with some genuinely great filmmaking.  Here is a selection of our favorites.  Which one is your favorite?  Please vote and we will write an article about the winner!</p>
         <form action="#" method="GET">
-            <select name="vote">
+            <select name="vote" id="chooseMovie">
+				<option value=" "></option>
                 <option value="The Cabin in the Woods">The Cabin in the Woods</option>
                 <option value="Insidious">Insidious</option>
                 <option value="Tucker and Dale vs Evil">Tucker and Dale vs Evil</option>
                 <option value="Scream">Scream</option>
             </select>
 			
-            <input class="btn-primary px-2" type="submit" value="VOTE">
+            <input class="btn-primary px-2" type="submit" value="VOTE" id="voteButton">
         </form>
 		</div>
     </div>
+	<div id="chosenMovie">
+		<p>something</p>
+	</div>
+<script src="movieVotes.js">
 </body>
 
 </html>
