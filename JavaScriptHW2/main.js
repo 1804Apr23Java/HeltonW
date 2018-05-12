@@ -85,7 +85,6 @@ function sumNums1and2(){
     num1 = num1Element.value;
     num2 = num2Element.value;
     var result = parseInt(num1) + parseInt(num2);
-    console.log("result " + result);
     if(isNaN(result)){
         sumSpan.innerHTML = "Cannot add!";
     } else {
@@ -199,6 +198,21 @@ document.getElementById("helloWorld").addEventListener("click", function(){
 // Use recursion.
 // On each node, call func(node).
 
+function walkTheDOM(node, func){
+    func(node);
+
+    var allChildren = node.children;
+    for(var i = 0; i < allChildren.length; i++){
+        walkTheDOM(allChildren[i], func);
+    }
+}
+
+var func = function printNode(node){
+    console.log(node.nodeName);
+}
+
+
+
 //test cases
 //1.
 //should print dir of the span
@@ -230,3 +244,8 @@ document.getElementById("helloWorld").addEventListener("click", function(){
 
 //9.
 //test by hovering over employee names
+
+//12.
+//should print HTML, HEAD, META, etc.
+//var htmlNode = document.getElementsByTagName("HTML")[0];
+//walkTheDOM(htmlNode, func);
