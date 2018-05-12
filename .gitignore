@@ -144,3 +144,4 @@ testem.log
 
 # ProjectZero properties
 connection.properties
+ProjectZero/target/classes/META-INF/MANIFEST.MF
