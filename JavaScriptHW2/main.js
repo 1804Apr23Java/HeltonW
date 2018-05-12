@@ -5,7 +5,8 @@
   
 function getUSA(){
     var myElement = document.querySelector("[data-customAttr='USA']");
-    console.log(myElement.innerHTML);
+    // console.log(myElement.innerHTML);
+    console.dir(myElement);
 }
 
 // 2. Sales
@@ -114,6 +115,25 @@ skillsSelector.addEventListener("change", function() {
 // Make the background color (of all favoriteColor radio buttons) 
 // the newly selected favoriteColor
 
+var radioColors = document.querySelectorAll("[name='favoriteColor']");
+var lastChecked;
+
+for(var i = 0; i < radioColors.length; i++){
+
+    radioColors[i].addEventListener("change", function(){
+        for(var j = 0; j < radioColors.length; j++){
+            if(radioColors[j].checked){
+                alert("So you like " + radioColors[j].value + " more than " + lastChecked + " now?");
+                lastChecked = radioColors[j].value;
+                for(var k = 0; k < radioColors.length; k++){
+                    // radioColors[k].style.backgroundColor = "red";                    
+                    radioColors[k].setAttribute("style", "background-color:red;");
+                    display.setAttribute("style", "display:none");
+                }
+            }
+        }
+    });
+}
 
 // 9. Show/Hide Event
 // NOTE: Write unobtrusive Javascript
@@ -121,13 +141,45 @@ skillsSelector.addEventListener("change", function() {
 // Hide the name if shown.
 // 	Show the name if hidden.
 
+var empNames = document.getElementsByClassName("empName");
+for(var i = 0; i < empNames.length; i++){
+    empNames[i].style.opacity = 1;
+    empNames[i].addEventListener("mouseenter", toggleOpacity);
+}
+
+function toggleOpacity(){
+    if(this.style.opacity == 1){
+        this.style.opacity = 0;
+    } else {
+        this.style.opacity = 1;
+    }    
+}
 
 // 10. Current Time
 // Regarding this element:
 // 	<h5 id="currentTime"></h5>
 // Show the current time in this element in this format: 9:05:23 AM
 // The time should be accurate to the second without having to reload the page.
+var i = 0;
+var timeHeader = document.getElementById("currentTime");
+setInterval(function(){
+    var outDate = new Date();
+    var rawHours = outDate.getHours();
+    var amOrPm = (rawHours < 12 ? 'am' : 'pm');
+    var fixedHours = (rawHours < 12 ? rawHours : rawHours-12);
+    fixedHours = zeroTime(fixedHours);
+    var fixedMinutes = zeroTime(outDate.getMinutes());
+    var fixedSeconds = zeroTime(outDate.getSeconds());
+    var dateString = fixedHours + ":" + fixedMinutes + ":" + fixedSeconds + " " + amOrPm;
+    timeHeader.innerHTML = dateString;
+}, 1000);
 
+function zeroTime(inputTime){
+    if(inputTime < 10){
+        return "0" + inputTime.toString();
+    }
+    return inputTime;
+}
 
 // 11. Delay
 // Regarding this element:
@@ -135,6 +187,11 @@ skillsSelector.addEventListener("change", function() {
 // <p id="helloWorld">Hello, World!</p>
 // Three seconds after a user clicks on this element, change the text to a random color.
 
+document.getElementById("helloWorld").addEventListener("click", function(){    
+    setTimeout(function(){ 
+        document.getElementById("helloWorld").style.color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16); 
+    }, 3000);    
+});
 
 // 12. Walk the DOM
 // Define function walkTheDOM(node, func)
@@ -144,24 +201,23 @@ skillsSelector.addEventListener("change", function() {
 
 //test cases
 //1.
-console.log("Question 1 : Should be 'States' : ");
-getUSA();
+//should print dir of the span
 
-//2.
-console.log("Question 2 : Should be 'John, Austin, Courtney, Scout' : ");
-getPeopleInSales();
+// //2.
+// console.log("Question 2 : Should be 'John, Austin, Courtney, Scout' : ");
+// getPeopleInSales();
 
-//3.
-console.log("Question 3 : Should be 'Here1, Here2, Here, Here3' : ");
-getAnchorChildren();
+// //3.
+// console.log("Question 3 : Should be 'Here1, Here2, Here, Here3' : ");
+// getAnchorChildren();
 
-//4.
-console.log("Question 4 : Should be 'dom, DOM, javascript, JavaScript' : ");
-getSelectedHobbies();
+// //4.
+// console.log("Question 4 : Should be 'dom, DOM, javascript, JavaScript' : ");
+// getSelectedHobbies();
 
-//5.
-console.log("Question 5 : Should be 'USA, <span data-customattr='USA'>States</span>', (4 more) : ");
-getCustomAttribute();
+// //5.
+// console.log("Question 5 : Should be 'USA, <span data-customattr='USA'>States</span>', (4 more) : ");
+// getCustomAttribute();
 
 //6.
 //test by adding numbers to num1 and num2 inputs
@@ -169,3 +225,8 @@ getCustomAttribute();
 //7.
 //test by selecting skills from the selector box
 
+//8.
+//test by clicking color radio buttons
+
+//9.
+//test by hovering over employee names
