@@ -62,7 +62,6 @@ function getCustomAttribute(){
     }
 }
 
-
 // 6. Sum Event
 // NOTE: Write unobtrusive Javascript
 // Regarding these elements:	
@@ -118,16 +117,14 @@ var radioColors = document.querySelectorAll("[name='favoriteColor']");
 var lastChecked;
 
 for(var i = 0; i < radioColors.length; i++){
-
     radioColors[i].addEventListener("change", function(){
         for(var j = 0; j < radioColors.length; j++){
             if(radioColors[j].checked){
                 alert("So you like " + radioColors[j].value + " more than " + lastChecked + " now?");
                 lastChecked = radioColors[j].value;
                 for(var k = 0; k < radioColors.length; k++){
-                    // radioColors[k].style.backgroundColor = "red";                    
-                    radioColors[k].setAttribute("style", "background-color:red;");
-                    display.setAttribute("style", "display:none");
+                    console.log(radioColors[k]);
+                    radioColors[k].style.backgroundColor = radioColors[j].value;
                 }
             }
         }
@@ -211,8 +208,6 @@ var func = function printNode(node){
     console.log(node.nodeName);
 }
 
-
-
 //test cases
 //1.
 //should print dir of the span
@@ -247,5 +242,5 @@ var func = function printNode(node){
 
 //12.
 //should print HTML, HEAD, META, etc.
-//var htmlNode = document.getElementsByTagName("HTML")[0];
-//walkTheDOM(htmlNode, func);
+// var htmlNode = document.getElementsByTagName("HTML")[0];
+// walkTheDOM(htmlNode, func);
