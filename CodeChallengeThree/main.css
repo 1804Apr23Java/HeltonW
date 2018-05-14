@@ -1,0 +1,52 @@
+body{
+    background-color: lightblue;
+    margin-left: 20%;
+    max-width: 60%;
+}
+
+h1, h2, h3, .bookImage, .centerEles  {
+    text-align: center;
+}
+
+#myBookDetails{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.bookSelectedInMainList{
+    background-color: lightgreen;
+}
+
+/* .bookDisplay{
+    display: none;
+}
+
+.bookSelected{
+    display: block;
+}  */
+
+.bookImage{
+    display: block;
+    max-width: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centerEles{
+    text-align: center;
+}
+
+.newBookLabel {
+    margin-top: 20px;
+}
+
+#newBook {
+    width: 40%;
+    max-width: 400px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

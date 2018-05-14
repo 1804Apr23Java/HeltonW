@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bookshelf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+    <!-- 
+        BOOK LIST 
+        click on these entries to pull up separate book details
+    -->
+    <div id="myBookList">
+        <h1>My Bookshelf</h1>
+        <div class="bookShelfContents">
+            <ul id="allBookTitles" class="list-group">
+                <li class="list-group-item ownedBook bookSelectedInMainList">Book Title1</li>
+                <li class="list-group-item ownedBook">Book Title2</li>
+                <li class="list-group-item ownedBook">Book Title3</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--
+        BOOK DETAILS
+        image, author, genre, etc. show up here
+        all elements are "hidden" until displayed
+    -->
+    <div id="myBookDetails">
+        <h2>Book Details</h2>
+        <div class="bookDisplay bookSelected">
+            <h3>The World of Abstract Art</h3>
+            <img class="bookImage" src="images/worldofabstractart.png" />
+            <ul class="list-group">
+                <li class="list-group-item">Author: Emily Robbins</li>
+                <li class="list-group-item">Genre: Art History</li>
+            </ul>
+        </div>
+        <div class="bookDisplay">
+            <h3>The Myth of Sisyphus</h3>
+            <img class="bookImage" src="images/mythofsis.jpg" />
+            <ul class="list-group">
+                <li class="list-group-item">Author: Albert Camus</li>
+                <li class="list-group-item">Genre: Philosophy</li>
+            </ul>
+        </div>
+        <div class="bookDisplay">
+            <h3>Developers and Depression</h3>
+            <img class="bookImage" src="images/devanddep.png" />
+            <ul class="list-group">
+                <li class="list-group-item">Author: Greg Baugues</li>
+                <li class="list-group-item">Genre: Self-Help</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--
+        NEW BOOK INPUT
+        input boxes for user to enter new book details
+    -->
+    <div id="myNewBookInput">
+        <h2>Add New Book</h2>  
+        <span class="newBookLabel">New Title:</span> 
+        <span><input type="text" id="newBookTitle" class="form-control"></span>
+                
+        <span class="newBookLabel">New Author:</span> 
+        <span><input type="text" id="newAuthor" class="form-control"></span>
+                    
+        <span class="newBookLabel">New Genre:</span> 
+        <span><input type="text" id="newGenre" class="form-control"></span>
+                    
+        <span class="newBookLabel">New Image (as URL):</span> 
+        <span><input type="text" id="newImage" class="form-control"></span>
+            
+        <div class="centerEles">
+            <button id="newBook" class="btn btn-primary">Add New Book</button>
+        </div>
+        
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+
+</html>
