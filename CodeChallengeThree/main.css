@@ -19,13 +19,13 @@ h1, h2, h3, .bookImage, .centerEles  {
     background-color: lightgreen;
 }
 
-/* .bookDisplay{
+.bookDisplay{
     display: none;
 }
 
 .bookSelected{
     display: block;
-}  */
+} 
 
 .bookImage{
     display: block;

@@ -6,9 +6,9 @@ currentBookShelfList = document.querySelectorAll(".ownedBook");
 for(var i = 0; i < currentBookShelfList.length; i++){
     console.log(i);
     currentBookShelfList[i].addEventListener("click", function(){        
-        getElementsByClassName("bookSelectedInMainList")[0].classList.remove("bookSelectedInMainList");
+        document.getElementsByClassName("bookSelectedInMainList")[0].classList.remove("bookSelectedInMainList");
         this.className += " bookSelectedInMainList";
-        
+        // display and/or hide book blocks here
     });
 }
 
@@ -25,8 +25,14 @@ document.getElementById("newBook").addEventListener("click", function(){
     var newImage = document.getElementById("newImage").value;
     if(newBookTitle == false || newAuthor == false ||
         newGenre == false || newImage == false){
-            break;
+            return;
         }
     
     // build new div here
+    var newBook = document.createElement("div");
+    newBook.setAttribute("class", "bookDisplay");
+
+    // just a console print
+    console.log("new book is: " + newBookTitle + " " + newAuthor + " " + newGenre + " " + newImage);
+
 });
