@@ -81,11 +81,10 @@ public class VoteServlet extends HttpServlet {
 			int result=-1;
 			while(rs.next()) {
 				result = rs.getInt("ANYTHING");
-				System.out.println(result + " is result");
 			}
 			
 			
-			return -1;
+			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
