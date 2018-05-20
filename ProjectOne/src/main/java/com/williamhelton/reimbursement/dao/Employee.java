@@ -2,7 +2,7 @@ package com.williamhelton.reimbursement.dao;
 
 public class Employee {
 	private int employeeId;
-	private String userName;
+	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -13,7 +13,7 @@ public class Employee {
 			boolean isManager) {
 		super();
 		this.employeeId = employeeId;
-		this.userName = userName;
+		this.username = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -26,11 +26,11 @@ public class Employee {
 	}
 	
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -39,6 +39,10 @@ public class Employee {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public boolean validatePassword(String passwordInput) {
+		return(passwordInput.equals(password));
 	}
 
 	public String getFirstName() {
