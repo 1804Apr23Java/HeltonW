@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,5 +55,31 @@ public class ReimbursementDAOTest {
 	public void testCreateNewReimbursement() {
 		Employee emp = employeeDAO.getEmployee("user1");
 		assertTrue(reimbursementDAO.createNewReimbursement(emp.getEmployeeId(), "pending", "description 0123", 12.34));
+	}
+	
+	@Test
+	public void testGetAllReimbursements() {
+		Employee emp1 = employeeDAO.getEmployee("user1");
+		Employee emp2 = employeeDAO.getEmployee("user2");
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "pending", "description 0123", 12.34);
+		reimbursementDAO.createNewReimbursement(emp2.getEmployeeId(), "pending", "description 9876", 98.76);
+		List<Reimbursement> list = reimbursementDAO.getAllReimbursements();
+		assertTrue(list.size() == 2);
+	}
+	
+	@Test
+	public void testGetReimbursementsByEmployee() {
+		Employee emp1 = employeeDAO.getEmployee("user1");
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "pending", "description 0123", 12.34);
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "pending", "description 4567", 45.67);
+		assertTrue(reimbursementDAO.getReimbursementsByEmployee(emp1.getEmployeeId()).size() == 2);		
+	}
+	
+	@Test
+	public void testGetReimbursementsByApproval() {
+		Employee emp1 = employeeDAO.getEmployee("user1");
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "pending", "description 0123", 12.34);
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "approved", "description 4567", 45.67);
+		assertTrue(reimbursementDAO.getReimbursementsByApproval("pending").size() == 1);	
 	}
 }

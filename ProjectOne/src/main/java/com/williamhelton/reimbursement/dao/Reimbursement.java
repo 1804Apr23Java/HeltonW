@@ -9,11 +9,11 @@ public class Reimbursement {
 	private String approvalStatus;
 	private int approvalManagerId;
 	private String descriptionNote;
-	private float currencyValue;
+	private double currencyValue;
 	
 	//with no approvalManagerId
 	public Reimbursement(int reimbursementId, Timestamp dateTimeStamp, int requesterEmployeeId, String approvalStatus,
-			String descriptionNote, float currencyValue) {
+			String descriptionNote, double currencyValue) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.dateTimeStamp = dateTimeStamp;
@@ -27,7 +27,7 @@ public class Reimbursement {
 
 	//with approvalManagerId
 	public Reimbursement(int reimbursementId, Timestamp dateTimeStamp, int requesterEmployeeId, int approvalManagerId,
-			String approvalStatus, String descriptionNote, float currencyValue) {
+			String approvalStatus, String descriptionNote, double currencyValue) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.dateTimeStamp = dateTimeStamp;
@@ -77,11 +77,11 @@ public class Reimbursement {
 		this.descriptionNote = descriptionNote;
 	}
 
-	public float getCurrencyValue() {
+	public double getCurrencyValue() {
 		return currencyValue;
 	}
 
-	public void setCurrencyValue(float currencyValue) {
+	public void setCurrencyValue(double currencyValue) {
 		this.currencyValue = currencyValue;
 	}
 
