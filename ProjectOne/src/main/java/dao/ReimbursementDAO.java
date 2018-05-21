@@ -1,4 +1,4 @@
-package com.williamhelton.reimbursement.dao;
+package dao;
 
 import java.sql.Timestamp;
 import java.util.List;

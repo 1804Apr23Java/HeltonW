@@ -1,4 +1,4 @@
-package com.williamhelton.reimbursement.dao;
+package dao;
 
 public class Employee {
 	private int employeeId;

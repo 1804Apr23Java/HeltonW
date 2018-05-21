@@ -1,4 +1,4 @@
-package com.williamhelton.reimbursement.dao;
+package dao;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.williamhelton.reimbursement.util.ConnectionUtil;
+import util.ConnectionUtil;
 
 public class EmployeeDAOTest {
 	private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();

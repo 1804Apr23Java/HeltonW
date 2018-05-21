@@ -1,4 +1,4 @@
-package com.williamhelton.reimbursement.dao;
+package dao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.williamhelton.reimbursement.util.ConnectionUtil;
+import util.ConnectionUtil;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
 
