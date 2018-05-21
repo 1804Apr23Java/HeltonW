@@ -9,6 +9,13 @@ public class Employee {
 	private String email;
 	private boolean isManager;
 	
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", username=" + username + ", password=" + password
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", isManager="
+				+ isManager + "]";
+	}
+
 	public Employee(int employeeId, String userName, String password, String firstName, String lastName, String email,
 			boolean isManager) {
 		super();
