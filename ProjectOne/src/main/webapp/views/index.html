@@ -36,17 +36,20 @@
 									</button>
 								</div>
 								<!-- Modal Body for Employee Login -->
-								<div class="modal-body">
-									<h3 style="text-align: center;">Username</h3>
-									<input type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
-									<h3 style="text-align: center;">Password</h3>
-									<input type=password style="width: 80%; margin-left: 10%;">
-									
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" id="employeeLoginButton" class="btn btn-primary">Login</button>
-								</div>
+								<form action="Login" method="post">
+									<div class="modal-body">
+										<h3 style="text-align: center;">Username</h3>
+										<input id="loginUsername" name="username" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
+										<h3 style="text-align: center;">Password</h3>
+										<input id="loginPassword" name="password" type=password style="width: 80%; margin-left: 10%;">
+										
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<input type="submit" id="employeeLoginButton" class="btn btn-primary" value="Log In">
+									</div>
+								</form>
+								
 							</div>
 						</div>
 					</div>
