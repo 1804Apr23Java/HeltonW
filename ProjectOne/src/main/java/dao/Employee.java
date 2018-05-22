@@ -83,5 +83,4 @@ public class Employee {
 	public void setManager(boolean isManager) {
 		this.isManager = isManager;
 	}	
-	
 }
