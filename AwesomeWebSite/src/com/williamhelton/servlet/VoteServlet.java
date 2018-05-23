@@ -16,20 +16,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.williamhelton.connectionutil.ConnectionUtil;
-
 public class VoteServlet extends HttpServlet {
 	
 	
 
 	/**
-	 * 
+	 * CREATE TABLE PROJ1EMPLOYEE (
+    EMP_ID VARCHAR2(100) PRIMARY KEY,
+    EMP_USERBAME VARCHAR2(100),
+    EMP_PASSWORD VARCHAR2(100),
+    EMP_EMAIL VARCHAR2(100)
+    
+	 * INSERT INTO PROJ1EMPLOYEE VALUES (1,'JOSE','PASS', 'JLM@GMAIL.COM');
 	 */
 	private static final long serialVersionUID = 3761901033949937002L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		RequestDispatcher rd = req.getRequestDispatcher("besthorror.html");
+		RequestDispatcher rd = req.getRequestDispatcher("loginHome.html");
 		rd.forward(req, resp);
 	}
 	
@@ -37,6 +41,7 @@ public class VoteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		//obtain request parameters
 		String result = req.getParameter("vote");
+		//string result = req.getParameter("vote");
 		System.out.println(result);
 		try {
 			System.out.println(getMovie(result));
@@ -53,7 +58,7 @@ public class VoteServlet extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		pw.write("<p style = \"margin:30px\"> The answer is: " + result + "</p>");
 		
-		RequestDispatcher rd = req.getRequestDispatcher("besthorror.html");
+		RequestDispatcher rd = req.getRequestDispatcher("loginHome.html");
 		rd.forward(req, resp);
 		
 		//save the answer as a request attribute (answer servlet)
@@ -66,21 +71,21 @@ public class VoteServlet extends HttpServlet {
 		
 	}
 	
-	public int getMovie(String movie) throws ClassNotFoundException {
+	public String getMovie(String username) throws ClassNotFoundException {
 		String filename = "connection.properties";
 		PreparedStatement p = null;
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "master");
-			String sql = "SELECT ANYTHING FROM MOVIES WHERE MOVIE_TITLE = ?";
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@apr23java.cg5hazkndtda.us-east-2.rds.amazonaws.com:1521:ORCL", "jlmunoz4", "Utep**9900");
+			String sql = "SELECT EMP_PASSWORD FROM PROJ1EMPLOYEE WHERE EMP_USERBAME = ?";
 			p = con.prepareStatement(sql);
-			p.setString(1, movie);
+			p.setString(1, username);
 			ResultSet rs = p.executeQuery();
-			System.out.println("query executed");
-			int result=-1;
+			System.out.println("query executed:");
+			String result= "null oops";
 			while(rs.next()) {
-				result = rs.getInt("ANYTHING");
+				result = rs.getString("EMP_PASSWORD");
 			}
 			
 			
@@ -88,6 +93,6 @@ public class VoteServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 }

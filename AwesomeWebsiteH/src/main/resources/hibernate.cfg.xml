@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.username">jlmunoz4</property>
+		<property name="hibernate.connection.password">Utep**9900</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@apr23java.cg5hazkndtda.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+
+		<property name="hibernate.show_sql">true</property>
+
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- mapping for beans -->
+		<mapping class="com.hibernate.beans.Movies"></mapping> 
+		<mapping class="com.hibernate.beans.Surveys"></mapping>
+		
+	</session-factory>
+
+
+</hibernate-configuration>
