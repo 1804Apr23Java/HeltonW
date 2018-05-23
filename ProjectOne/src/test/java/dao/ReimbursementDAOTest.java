@@ -82,4 +82,12 @@ public class ReimbursementDAOTest {
 		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "approved", "description 4567", 45.67);
 		assertTrue(reimbursementDAO.getReimbursementsByApproval("pending").size() == 1);	
 	}
+	
+	@Test
+	public void testGetReimbursementsByEmployeeAndApproval() {
+		Employee emp1 = employeeDAO.getEmployee("user1");
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "pending", "description 0123", 12.34);
+		reimbursementDAO.createNewReimbursement(emp1.getEmployeeId(), "approved", "description 4567", 45.67);
+		assertTrue(reimbursementDAO.getReimbursementsByEmployeeAndApproval(emp1.getEmployeeId(), "approved").size() == 1);	
+	}
 }

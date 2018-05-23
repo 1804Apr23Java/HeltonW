@@ -18,8 +18,8 @@
 		<nav class="navbar navbar-expand navbar-light bg-dark">
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link active text-light" href="/Reimbursement/Login">
-						Home
+					<a class="nav-item nav-link active text-light" href="/Reimbursement/Login">Home
+						<span class="sr-only">(current)</span>
 					</a>
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -38,13 +38,13 @@
 								</div>
 								<!-- Modal Body for Employee Login -->
 								<form action="Login" method="post">
-									<div class="modal-body">
-										<h3 style="text-align: center;">Username</h3>
-										<input id="loginUsername" name="username" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
-										<h3 style="text-align: center;">Password</h3>
-										<input id="loginPassword" name="password" type=password style="width: 80%; margin-left: 10%;">
-										
-									</div>
+                                        <div class="modal-body">
+                                                <h3 style="text-align: center;">Username</h3>
+                                                <input id="loginUsername" name="username" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
+                                                <h3 style="text-align: center;">Password</h3>
+                                                <input id="loginPassword" name="password" type=password style="width: 80%; margin-left: 10%;">
+                                                
+                                            </div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 										<input type="submit" id="employeeLoginButton" class="btn btn-primary" value="Log In">
@@ -56,8 +56,15 @@
 					</div>
 				</div>
 			</div>
-		</nav>
+        </nav>
+        
+        <!-- Alert Box for Logged Out -->
+        <div class="alert alert-info alert-dismissible" style="margin-top:20px; margin-bottom:20px">
+            <strong>Logged out!</strong> You have logged out of your session.
+        </div>
 	</div>
+
+    
 
 	<!-- Bootstrap CDN -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

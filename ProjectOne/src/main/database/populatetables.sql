@@ -8,6 +8,11 @@ INSERT INTO EMPLOYEE (USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ISMANAGER)
     VALUES ('sigbox3', 'hoolibib', 'Gavin', 'Belson', 'belsong3@hooli.com', 0);
 INSERT INTO EMPLOYEE (USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ISMANAGER)
     VALUES ('notimportant', 'darktimes', 'Eric', 'Michaels', 'emc@yahoo.com', 0);
+INSERT INTO EMPLOYEE (USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ISMANAGER)
+    VALUES ('u1', 'p1', 'TestUser', 'TestUserLast', 't1@yahoo.com', 0);
+INSERT INTO EMPLOYEE (USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ISMANAGER)
+    VALUES ('m1', 'n1', 'TestManager', 'TestManagerLast', 'm1@yahoo.com', 1);
+    
 
 INSERT INTO REIMBURSEMENT (REQUESTER_EMP_ID, APPROVAL_STATUS, DESCRIPTION_NOTE, CURRENCY_VALUE)
     VALUES (200, 'pending', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 9.95);

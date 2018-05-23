@@ -1,10 +1,11 @@
 package util;
 
 import dao.Employee;
+import dao.EmployeeDAO;
 import dao.EmployeeDAOImpl;
 
 public class LoginVerifier {
-	static EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+	static EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 	
 	public static String userLogin(String username, String password) {
 		if(userIsValid(username, password)) {
@@ -19,16 +20,13 @@ public class LoginVerifier {
 	private static boolean userIsValid(String username, String password) {
 		// TODO Auto-generated method stub
 		Employee emp = employeeDAO.getEmployee(username);
-		if(emp == null) {
-			System.out.println("emp is null");
-			return false;
-		}
-		if(!emp.validatePassword(password)) {
-			System.out.println("password bad");
-			return false;
-		}
-		System.out.println("user valid");
-		return true;
+		System.out.println(username);
+		System.out.println(emp);
+		return (emp != null && emp.validatePassword(password));
+//		if(emp == null || !emp.validatePassword(password)) {
+//			return false;
+//		}
+//		return true;
 	}
 
 	private static boolean isManager(String username) {

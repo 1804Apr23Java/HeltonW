@@ -137,4 +137,38 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		return false;
 	}
 
+	@Override
+	public List<Reimbursement> getReimbursementsByEmployeeAndApproval(int requesterEmpIdInput, String approvalStatusInput) {
+		PreparedStatement p = null;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile(filename);
+			String sql = "SELECT * FROM REIMBURSEMENT WHERE REQUESTER_EMP_ID = ? AND APPROVAL_STATUS = ?";
+			p = con.prepareStatement(sql);
+			p.setInt(1, requesterEmpIdInput);
+			p.setString(2, approvalStatusInput);
+			ResultSet rs = p.executeQuery();
+			List<Reimbursement> results = new ArrayList<>();
+			
+			while (rs.next()) {
+				int reimbursementId = rs.getInt("REIMBURSEMENT_ID");
+				Timestamp dateTimeStamp = rs.getTimestamp("DATETIMESTAMP");
+				int requesterEmpId = rs.getInt("REQUESTER_EMP_ID");
+				String approvalStatus = rs.getString("APPROVAL_STATUS");
+				int approvalManagerId = rs.getInt("APPROVAL_MANAGER_ID");
+				String descriptionNote = rs.getString("DESCRIPTION_NOTE");
+				double currencyValue = rs.getDouble("CURRENCY_VALUE");
+				Reimbursement reimbursement = new Reimbursement(reimbursementId, dateTimeStamp, requesterEmpId, approvalManagerId,
+						approvalStatus, descriptionNote, currencyValue);
+				results.add(reimbursement);				
+			}
+			con.close();
+			return results;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

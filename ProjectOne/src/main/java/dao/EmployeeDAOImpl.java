@@ -32,12 +32,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				String lastName = rs.getString("LASTNAME");
 				String email = rs.getString("EMAIL");
 				boolean isManager = rs.getInt("ISMANAGER") == 1 ? true : false;
-				
 				Employee employee = new Employee(userID, username, password, firstName, lastName, email, isManager);
 				
 				con.close();
 				return employee;
 			} else {
+				System.out.println("no return next");
 				return null;
 			}
 		} catch (SQLException e) {
@@ -45,6 +45,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("at bottom");
 		return null;
 	}
 

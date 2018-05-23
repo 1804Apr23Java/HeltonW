@@ -18,11 +18,27 @@
     <url-pattern>/Employee</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>GetEmployeeInfoServlet</servlet-name>
-    <servlet-class>com.williamhelton.reimbursement.servlets.GetEmployeeInfoServlet</servlet-class>
+    <servlet-name>ManagerServlet</servlet-name>
+    <servlet-class>servlets.ManagerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetEmployeeInfoServlet</servlet-name>
-    <url-pattern>/GetEmployeeInfo</url-pattern>
+    <servlet-name>ManagerServlet</servlet-name>
+    <url-pattern>/Manager</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InvalidLoginServlet</servlet-name>
+    <servlet-class>servlets.InvalidLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvalidLoginServlet</servlet-name>
+    <url-pattern>/InvalidLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
 </web-app>
