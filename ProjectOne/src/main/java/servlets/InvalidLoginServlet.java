@@ -40,7 +40,7 @@ public class InvalidLoginServlet extends HttpServlet {
 		
 		String destination = LoginVerifier.userLogin(username, password);
 		
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);
 		if(!destination.equals("InvalidLogin")) {
 			session.setAttribute("username", username);
 		}

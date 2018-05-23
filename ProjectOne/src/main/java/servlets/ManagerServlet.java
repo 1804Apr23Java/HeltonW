@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ManagerServlet
  */
+@WebServlet("/ManagerServlet")
 public class ManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

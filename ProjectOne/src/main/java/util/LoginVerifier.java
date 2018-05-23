@@ -23,10 +23,6 @@ public class LoginVerifier {
 		System.out.println(username);
 		System.out.println(emp);
 		return (emp != null && emp.validatePassword(password));
-//		if(emp == null || !emp.validatePassword(password)) {
-//			return false;
-//		}
-//		return true;
 	}
 
 	private static boolean isManager(String username) {
