@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Employee Reimbursement Portal - Logged In - Employee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navbar for Employee -->
+        <nav class="navbar navbar-expand navbar-light bg-dark">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <!-- Greetings -->
+                <div class="navbar-nav text-light">
+                    Logged in as Employee
+                </div>
+
+                <!-- Logout Button -->
+                <div class="navbar-nav ml-md-auto">
+                    <a class="nav-item nav-link active text-light" href="/Reimbursement/Logout">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- New Reimbursement Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newReimbursementModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
+            Create New Reimbursement
+        </button>
+
+        <!-- New Reimbursement Modal -->
+        <div class="modal fade" id="newReimbursementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Reimbursement Request</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for New Reimbursement -->
+                    <form action="NewReimbursement" method="post">
+                        <div class="modal-body">
+                            <h3 style="text-align: center;">Description</h3>
+                            <input id="newReimbursementDescription" name="description" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
+
+                            <h3 style="text-align: center;">Amount</h3>
+                            <input id="newReimbursementAmount" name="amount" type=number min="0.01" step="0.01" style="display: block; width: 200px; margin: auto; text-align: right;">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" id="newReimbursementButton" class="btn btn-primary" value="Submit Reimbursement">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Employee Info Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEmployeeInfoModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
+            Update Employee Info
+        </button>
+
+        <!-- Update Employee Info Modal -->
+        <div class="modal fade" id="updateEmployeeInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Employee Information</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for Update Employee Info -->
+                    <form action="UpdateEmployeeInfo" method="post">
+                        <div class="modal-body">
+                            <h3 style="text-align: center;">First Name</h3>
+                            <input id="loginUsername" name="firstname" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
+                            <h3 style="text-align: center;">Last Name</h3>
+                            <input id="loginPassword" name="lastname" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
+                            <h3 style="text-align: center;">Email Address</h3>
+                            <input id="loginPassword" name="email" type=email style="width: 80%; margin-left: 10%;">
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" id="updateEmployeeInfoButton" class="btn btn-primary" value="Update Info">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- View Pending Reimbursements Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewPendingReimbursementsModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
+            View Pending Reimbursements
+        </button>
+
+        <!-- View Pending Reimbursements Modal -->
+        <div class="modal fade" id="viewPendingReimbursementsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pending Reimbursements</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for View Pending Reimbursements -->
+                    <div class="modal-body pendingReimbursements">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Employee #</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Approval Manager</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="thisEmployeesPendingReimbursements">
+                                <!-- <tr>
+                                    <th scope="row">12</th>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat consectetur nulla amet praesentium tempore numquam debitis dicta saepe temporibus mollitia!</td>
+                                    <td>dummytext</td>
+                                    <td>1234.56</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Resolved Reimbursements Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewResolvedReimbursementsModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
+            View Resolved Reimbursements
+        </button>
+
+        <!-- View Resolved Reimbursements Modal -->
+        <div class="modal fade" id="viewResolvedReimbursementsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Resolved Reimbursements</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for View Resolved Reimbursements -->
+                    <div class="modal-body resolvedReimbursements">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Employee #</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Approval Manager</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="thisEmployeesResolvedReimbursements">
+                                <!-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>1234.56</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Developer JS -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/welcome-employee.js"></script>
+</body>
+
+</html>
