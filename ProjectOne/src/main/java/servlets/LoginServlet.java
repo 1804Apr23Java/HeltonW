@@ -31,8 +31,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {// TODO Auto-generated method stub
-		RequestDispatcher rd = request.getRequestDispatcher("views/index.html");
-		rd.forward(request, response);
+		request.getRequestDispatcher("views/index.html").forward(request, response);
 	}
 
 	/**
@@ -41,9 +40,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		System.out.println("login username + " + username); //
 		String destination = LoginVerifier.userLogin(username, password);
-		System.out.println("destination + " + destination); //
 		HttpSession session = request.getSession();
 		if(!destination.equals("InvalidLogin")) {
 			session.setAttribute("username", username);

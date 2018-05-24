@@ -41,4 +41,12 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>NewReimbursementServlet</servlet-name>
+    <servlet-class>servlets.NewReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewReimbursementServlet</servlet-name>
+    <url-pattern>/NewReimbursement</url-pattern>
+  </servlet-mapping>
 </web-app>

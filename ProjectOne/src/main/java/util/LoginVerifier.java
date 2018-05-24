@@ -20,14 +20,11 @@ public class LoginVerifier {
 	private static boolean userIsValid(String username, String password) {
 		// TODO Auto-generated method stub
 		Employee emp = employeeDAO.getEmployee(username);
-		System.out.println(username);
-		System.out.println(emp);
 		return (emp != null && emp.validatePassword(password));
 	}
 
 	private static boolean isManager(String username) {
-		Employee emp = employeeDAO.getEmployee(username);
-		return(emp.isManager());
+		return(employeeDAO.getEmployee(username).isManager());
 	}
 	
 }
