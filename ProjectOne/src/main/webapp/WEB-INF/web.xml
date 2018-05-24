@@ -73,4 +73,20 @@
     <servlet-name>ThisEmployeesResolvedReimbursementsServlet</servlet-name>
     <url-pattern>/ThisEmployeesResolvedReimbursements</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AllPendingReimbursementsServlet</servlet-name>
+    <servlet-class>servlets.AllPendingReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllPendingReimbursementsServlet</servlet-name>
+    <url-pattern>/AllPendingReimbursements</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AllResolvedReimbursementsServlet</servlet-name>
+    <servlet-class>servlets.AllResolvedReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllResolvedReimbursementsServlet</servlet-name>
+    <url-pattern>/AllResolvedReimbursements</url-pattern>
+  </servlet-mapping>
 </web-app>
