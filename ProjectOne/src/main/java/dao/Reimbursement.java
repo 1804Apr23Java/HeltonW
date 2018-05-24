@@ -3,7 +3,9 @@ package dao;
 import java.sql.Timestamp;
 
 public class Reimbursement {
-    private int reimbursementId;
+    
+
+	private int reimbursementId;
 	private Timestamp dateTimeStamp;
 	private int requesterEmployeeId;
 	private String approvalStatus;
@@ -91,6 +93,14 @@ public class Reimbursement {
 
 	public void setApprovalManagerId(int approvalManagerId) {
 		this.approvalManagerId = approvalManagerId;
+	}
+	
+	@Override
+	public String toString() {
+		return "Reimbursement [reimbursementId=" + reimbursementId + ", dateTimeStamp=" + dateTimeStamp
+				+ ", requesterEmployeeId=" + requesterEmployeeId + ", approvalStatus=" + approvalStatus
+				+ ", approvalManagerId=" + approvalManagerId + ", descriptionNote=" + descriptionNote
+				+ ", currencyValue=" + currencyValue + "]";
 	}
 	
 }

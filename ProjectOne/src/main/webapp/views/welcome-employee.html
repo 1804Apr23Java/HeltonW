@@ -90,7 +90,7 @@
                             <input id="loginPassword" name="lastname" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
                             <h3 style="text-align: center;">Email Address</h3>
                             <input id="loginPassword" name="email" type=email style="width: 80%; margin-left: 10%;">
-                            
+
 
                         </div>
                         <div class="modal-footer">
@@ -111,7 +111,7 @@
         <!-- View Pending Reimbursements Modal -->
         <div class="modal fade" id="viewPendingReimbursementsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Pending Reimbursements</h5>
@@ -121,14 +121,30 @@
                     </div>
                     <!-- Modal Body for View Pending Reimbursements -->
                     <div class="modal-body pendingReimbursements">
-                        <ul>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime veritatis, ullam perspiciatis
-                                totam vel iste! Rem accusamus eaque ratione dolore.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime veritatis, ullam perspiciatis
-                                totam vel iste! Rem accusamus eaque ratione dolore.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime veritatis, ullam perspiciatis
-                                totam vel iste! Rem accusamus eaque ratione dolore.</li>
-                        </ul>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Employee #</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Approval Manager</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="thisEmployeesPendingReimbursements">
+                                <!-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>1234.56</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -145,7 +161,7 @@
         <!-- View Resolved Reimbursements Modal -->
         <div class="modal fade" id="viewResolvedReimbursementsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Resolved Reimbursements</h5>
@@ -155,14 +171,30 @@
                     </div>
                     <!-- Modal Body for View Resolved Reimbursements -->
                     <div class="modal-body resolvedReimbursements">
-                        <ul>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime veritatis, ullam perspiciatis
-                                totam vel iste! Rem accusamus eaque ratione dolore.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime veritatis, ullam perspiciatis
-                                totam vel iste! Rem accusamus eaque ratione dolore.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime veritatis, ullam perspiciatis
-                                totam vel iste! Rem accusamus eaque ratione dolore.</li>
-                        </ul>
+                        <table id="thisEmployeesResolvedReimbursements" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Employee #</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Approval Manager</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>1234.56</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -181,6 +213,7 @@
         crossorigin="anonymous"></script>
     <!-- Developer JS -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/welcome-employee.js"></script>
 </body>
 
 </html>

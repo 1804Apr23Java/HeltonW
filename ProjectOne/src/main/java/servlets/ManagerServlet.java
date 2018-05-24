@@ -29,7 +29,7 @@ public class ManagerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
-		if(session != null && session.getAttribute("username") != null) {
+		if(session != null && session.getAttribute("username") != null && (Boolean) session.getAttribute("isManager") == true) {
 			request.getRequestDispatcher("views/welcome-manager.html").forward(request, response);
 		} else {
 			response.sendRedirect("Login");

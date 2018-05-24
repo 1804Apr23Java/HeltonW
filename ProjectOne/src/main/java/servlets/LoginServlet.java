@@ -44,6 +44,11 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(!destination.equals("InvalidLogin")) {
 			session.setAttribute("username", username);
+			if(destination.equals("Manager")) {
+				session.setAttribute("isManager", true);
+			} else {
+				session.setAttribute("isManager", false);
+			}
 		}
 		response.sendRedirect(destination);
 	}

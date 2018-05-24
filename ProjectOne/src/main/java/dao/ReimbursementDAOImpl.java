@@ -150,7 +150,9 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			List<Reimbursement> results = new ArrayList<>();
 			
 			while (rs.next()) {
+				
 				int reimbursementId = rs.getInt("REIMBURSEMENT_ID");
+				System.out.println(reimbursementId);
 				Timestamp dateTimeStamp = rs.getTimestamp("DATETIMESTAMP");
 				int requesterEmpId = rs.getInt("REQUESTER_EMP_ID");
 				String approvalStatus = rs.getString("APPROVAL_STATUS");
@@ -159,6 +161,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				double currencyValue = rs.getDouble("CURRENCY_VALUE");
 				Reimbursement reimbursement = new Reimbursement(reimbursementId, dateTimeStamp, requesterEmpId, approvalManagerId,
 						approvalStatus, descriptionNote, currencyValue);
+				System.out.println(reimbursement.toString());
 				results.add(reimbursement);				
 			}
 			con.close();
