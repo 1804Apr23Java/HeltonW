@@ -7,6 +7,5 @@ public interface EmployeeDAO {
 	public List<Employee> getAllEmployees();
 	public boolean createEmployee(String username, String password, String firstName, String lastName, String email,
 			boolean isManager);
-	public boolean updateEmployee(int userId, String username, String password, String firstName, String lastName, String email,
-			boolean isManager);
+	public boolean updateEmployee(int userId, String firstName, String lastName, String email);
 }

@@ -107,20 +107,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public boolean updateEmployee(int userId, String username, String password, String firstName, String lastName, String email,
-			boolean isManager) {
+	public boolean updateEmployee(int userId, String firstName, String lastName, String email) {
 		PreparedStatement p = null;
 		try {
 			Connection con = ConnectionUtil.getConnectionFromFile(filename);
-			String sql = "UPDATE EMPLOYEE SET USERNAME = ?, PASSWORD = ?, FIRSTNAME = ?, LASTNAME = ?, EMAIL = ?, ISMANAGER = ? WHERE EMPLOYEE_ID = ?";
+			String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME = ?, EMAIL = ? WHERE EMPLOYEE_ID = ?";
 			p = con.prepareStatement(sql);
-			p.setString(1, username);
-			p.setString(2, password);
-			p.setString(3, firstName);
-			p.setString(4, lastName);
-			p.setString(5, email);
-			p.setInt(6, isManager == true ? 1 : 0);
-			p.setInt(7,  userId);
+			p.setString(1, firstName);
+			p.setString(2, lastName);
+			p.setString(3, email);
+			p.setInt(4, userId);
 			
 			int rowCount = p.executeUpdate();
 			con.close();

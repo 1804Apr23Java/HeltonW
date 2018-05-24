@@ -7,8 +7,7 @@ public class ReimbursementVerifier {
 	static ReimbursementDAO reimbursementDAO = new ReimbursementDAOImpl();
 	
 	public static String newReimbursement(int userId, String description, double amount) {
-		boolean success = reimbursementDAO.createNewReimbursement(userId, "pending", description, amount);
-		if(success) {
+		if(reimbursementDAO.createNewReimbursement(userId, "pending", description, amount)) {
 			return "SuccessfulTransaction";
 		} else {
 			return "BadTransaction";

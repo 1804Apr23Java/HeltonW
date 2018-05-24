@@ -49,4 +49,12 @@
     <servlet-name>NewReimbursementServlet</servlet-name>
     <url-pattern>/NewReimbursement</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateEmployeeInfoServlet</servlet-name>
+    <servlet-class>servlets.UpdateEmployeeInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEmployeeInfoServlet</servlet-name>
+    <url-pattern>/UpdateEmployeeInfo</url-pattern>
+  </servlet-mapping>
 </web-app>
