@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css">
 
 </head>
 
@@ -209,8 +209,7 @@
         </button>
 
         <!-- View All Employees Modal -->
-        <div class="modal fade" id="viewAllEmployeesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="viewAllEmployeesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -279,6 +278,7 @@
                                     <th scope="col">Approval Manager</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Amount</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody id="allEmployeesPendingReimbursements">
@@ -290,6 +290,10 @@
                                     <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat consectetur nulla amet praesentium tempore numquam debitis dicta saepe temporibus mollitia!</td>
                                     <td>dummytext</td>
                                     <td>1234.56</td>
+                                    <td>
+                                        <img src="./resources/check.png">
+                                        <img src="./resources/redx.png">
+                                    </td>
                                 </tr> -->
                             </tbody>
                         </table>
@@ -341,6 +345,89 @@
                                     <td>dummytext</td>
                                     <td>1234.56</td>
                                 </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Reimbursements By Employee Button -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#searchReimbursementsByEmployeeModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
+            Search Reimbursements By Employee
+        </button>
+
+        <!-- Search Box Reimbursements By Employee Modal -->
+        <div class="modal fade" id="searchReimbursementsByEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search Reimbursements By Employee</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for View All Resolved Reimbursements -->
+                    <form action="SearchReimbursementsByEmployee" method="post"></form>
+                    <div class="modal-body searchEmployee">
+
+                        <div class="modal-body">
+                            <h3 style="text-align: center;">Employee ID</h3>
+                            <input id="employeeIdSearch" name="empId" type=text style="width: 80%; margin-left: 10%; margin-bottom:20px;">
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" id="searchByEmployeeButton" class="btn btn-primary" value="Search" data-toggle="modal" data-target="#displayEmployeeResultsModal">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Reimbursements By Employee Modal -->
+        <div class="modal fade" id="displayEmployeeResultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Reimbursements By Employee</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for View All Resolved Reimbursements -->
+                    <div class="modal-body searchReimbursementsByEmployeeTable">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Employee #</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Approval Manager</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allEmployeesResolvedReimbursements">
+                                <!-- <tr>
+                                        <th scope="row">12</th>
+                                        <td>dummytext</td>
+                                        <td>dummytext</td>
+                                        <td>dummytext</td>
+                                        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat consectetur nulla amet praesentium tempore numquam debitis dicta saepe temporibus mollitia!</td>
+                                        <td>dummytext</td>
+                                        <td>1234.56</td>
+                                    </tr> -->
                             </tbody>
                         </table>
                     </div>

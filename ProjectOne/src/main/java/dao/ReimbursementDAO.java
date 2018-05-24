@@ -10,4 +10,6 @@ public interface ReimbursementDAO {
 	public List<Reimbursement> getReimbursementsByApproval(String approvalStatusInput);
 	public List<Reimbursement> getReimbursementsByEmployeeAndApproval(int requesterEmpIdInput, String approvalStatusInput);
 	public List<Reimbursement> getAllReimbursements();
+	public Reimbursement getReimbursement(int reimbursementId);
+	public boolean updateReimbursementApproval(int reimbursementIdInput, String approvalStatusInput, int managerId);
 }

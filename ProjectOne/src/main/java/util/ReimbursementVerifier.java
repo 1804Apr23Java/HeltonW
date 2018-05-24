@@ -13,4 +13,12 @@ public class ReimbursementVerifier {
 			return "BadTransaction";
 		}
 	}
+	
+	public static String updateReimbursement(int reimbursementIdInput, String approvalInput, int managerId) {
+		if(reimbursementDAO.updateReimbursementApproval(reimbursementIdInput, approvalInput, managerId)) {
+			return "SuccessfulTransaction";
+		} else {
+			return "BadTransaction";
+		}
+	}
 }

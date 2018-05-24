@@ -37,7 +37,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				con.close();
 				return employee;
 			} else {
-				System.out.println("no return next");
 				return null;
 			}
 		} catch (SQLException e) {
@@ -45,7 +44,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("at bottom");
 		return null;
 	}
 

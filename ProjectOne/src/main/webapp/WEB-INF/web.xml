@@ -97,4 +97,28 @@
     <servlet-name>AllEmployeeInfoServlet</servlet-name>
     <url-pattern>/AllEmployeeInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ApproveReimbursementServlet</servlet-name>
+    <servlet-class>servlets.ApproveReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApproveReimbursementServlet</servlet-name>
+    <url-pattern>/ApproveReimbursement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DenyReimbursementServlet</servlet-name>
+    <servlet-class>servlets.DenyReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DenyReimbursementServlet</servlet-name>
+    <url-pattern>/DenyReimbursement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchReimbursementsByEmployeeServlet</servlet-name>
+    <servlet-class>servlets.SearchReimbursementsByEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchReimbursementsByEmployeeServlet</servlet-name>
+    <url-pattern>/SearchReimbursementsByEmployee</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -172,4 +172,57 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		return null;
 	}
 
+	@Override
+	public Reimbursement getReimbursement(int reimbursementIdInput) {
+		PreparedStatement p = null;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile(filename);
+			String sql = "SELECT * FROM REIMBURSEMENT WHERE REIMBURSEMENT_ID = ?";
+			p = con.prepareStatement(sql);
+			p.setInt(1, reimbursementIdInput);
+			ResultSet rs = p.executeQuery();
+			Reimbursement reimbursement = null;
+			
+			if (rs.next()) {				
+				int reimbursementId = rs.getInt("REIMBURSEMENT_ID");
+				Timestamp dateTimeStamp = rs.getTimestamp("DATETIMESTAMP");
+				int requesterEmpId = rs.getInt("REQUESTER_EMP_ID");
+				String approvalStatus = rs.getString("APPROVAL_STATUS");
+				int approvalManagerId = rs.getInt("APPROVAL_MANAGER_ID");
+				String descriptionNote = rs.getString("DESCRIPTION_NOTE");
+				double currencyValue = rs.getDouble("CURRENCY_VALUE");
+				reimbursement = new Reimbursement(reimbursementId, dateTimeStamp, requesterEmpId, approvalManagerId,
+						approvalStatus, descriptionNote, currencyValue);
+			}
+			con.close();
+			return reimbursement;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public boolean updateReimbursementApproval(int reimbursementIdInput, String approvalStatusInput, int managerId) {
+		PreparedStatement p = null;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile(filename);
+			String sql = "UPDATE REIMBURSEMENT SET APPROVAL_STATUS = ?, APPROVAL_MANAGER_ID = ? WHERE REIMBURSEMENT_ID = ?";
+			p = con.prepareStatement(sql);
+			p.setString(1, approvalStatusInput);
+			p.setInt(2, managerId);
+			p.setInt(3, reimbursementIdInput);
+			int rowCount = p.executeUpdate();
+			con.close();
+			return (rowCount == 1) ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

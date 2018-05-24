@@ -34,6 +34,7 @@ public class Reimbursement {
 		this.reimbursementId = reimbursementId;
 		this.dateTimeStamp = dateTimeStamp;
 		this.requesterEmployeeId = requesterEmployeeId;
+		this.approvalManagerId = approvalManagerId;
 		this.approvalStatus = approvalStatus;
 		this.descriptionNote = descriptionNote;
 		this.currencyValue = currencyValue;
