@@ -16,7 +16,6 @@ ajaxGet(employeeURL, populateAllPendingReimbursements);
 function populateAllPendingReimbursements(xhr) {
     var reimbursementsArray = JSON.parse(xhr.responseText);
     var pendingTable = document.getElementById("allEmployeesPendingReimbursements");
-    console.log(reimbursementsArray);
     for (i in reimbursementsArray) {
         var reimbursementId = reimbursementsArray[i].reimbursementId;
         var dateTimeStamp = reimbursementsArray[i].dateTimeStamp;
@@ -51,7 +50,6 @@ function populateAllPendingReimbursements(xhr) {
             </td>
         `;
 
-        console.log(`${reimbursementId}`);
         pendingTable.appendChild(newTableRow);
         document.getElementById("approve" + reimbursementId).addEventListener("click", function(){
             alert(`${reimbursementId}`);
@@ -162,13 +160,9 @@ function searchReimbursementsByEmployee(xhr){
 
 document.getElementById("searchByEmployeeButton").addEventListener("click", function(){
     employeeURL = "http://localhost:8083/Reimbursement/SearchReimbursementsByEmployee";
-    dummy();
-})
-
-function dummy()
-{
     ajaxPostEmpIdSearch(employeeURL, searchReimbursementsByEmployee);
-}
+});
+
 function ajaxPostEmpIdSearch(url, func) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -179,6 +173,5 @@ function ajaxPostEmpIdSearch(url, func) {
     xhr.open("POST", url);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var empId = "empId=" + document.getElementById("employeeIdSearch").value;
-    console.log(empId);
     xhr.send(empId);
 }

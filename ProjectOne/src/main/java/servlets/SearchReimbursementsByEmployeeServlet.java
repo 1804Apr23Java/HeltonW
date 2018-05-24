@@ -35,7 +35,6 @@ public class SearchReimbursementsByEmployeeServlet extends HttpServlet {
 		response.setContentType("application/json");
 		
 		String empId = request.getParameter("empId");
-		System.out.println(empId);
 		
 		ReimbursementDAO reimbursementDAO = new ReimbursementDAOImpl();
 		List<Reimbursement> list = reimbursementDAO.getReimbursementsByEmployee(Integer.parseInt(empId));
