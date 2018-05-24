@@ -89,4 +89,12 @@
     <servlet-name>AllResolvedReimbursementsServlet</servlet-name>
     <url-pattern>/AllResolvedReimbursements</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AllEmployeeInfoServlet</servlet-name>
+    <servlet-class>servlets.AllEmployeeInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllEmployeeInfoServlet</servlet-name>
+    <url-pattern>/AllEmployeeInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

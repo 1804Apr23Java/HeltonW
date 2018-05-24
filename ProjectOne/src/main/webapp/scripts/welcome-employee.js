@@ -48,7 +48,6 @@ employeeURL = "http://localhost:8083/Reimbursement/ThisEmployeesResolvedReimburs
 ajaxGet(employeeURL, populateResolvedReimbursements);
 
 function populateResolvedReimbursements(xhr){
-    console.log(JSON.parse(xhr.responseText));
     var reimbursementsArray = JSON.parse(xhr.responseText);
     var resolvedTable = document.getElementById("thisEmployeesResolvedReimbursements");
     for(i in reimbursementsArray){

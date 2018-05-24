@@ -77,3 +77,36 @@ function populateAllResolvedReimbursements(xhr){
         resolvedTable.appendChild(newTableRow);
     }
 }
+
+
+/* GET array of all employees */
+employeeURL = "http://localhost:8083/Reimbursement/AllEmployeeInfo";
+ajaxGet(employeeURL, populateAllEmployees);
+
+function populateAllEmployees(xhr){
+    var employeesArray = JSON.parse(xhr.responseText);
+    var employeesTable = document.getElementById("allEmployeesInfo");
+    for(i in employeesArray){
+        var employeeId = employeesArray[i].employeeId;
+        var username = employeesArray[i].userName;
+        var firstName = employeesArray[i].firstName;
+        var lastName = employeesArray[i].lastName;
+        var email = employeesArray[i].email;
+        if(employeesArray[i].manager == true){
+            var isManager = "Manager";
+        } else {
+            var isManager = "Employee";
+        }
+
+        var newTableRow = document.createElement("tr");
+        newTableRow.innerHTML = `
+        <th scope="row">${employeeId}</th>
+            <td>${username}</td>
+            <td>${firstName}</td>
+            <td>${lastName}</td>
+            <td>${email}</td>
+            <td>${isManager}</td>
+        `;
+        employeesTable.appendChild(newTableRow);
+    }
+}

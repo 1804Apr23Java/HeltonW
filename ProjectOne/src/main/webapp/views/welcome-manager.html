@@ -203,6 +203,54 @@
             </div>
         </div>
 
+        <!-- View All Employees Button -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#viewAllEmployeesModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
+            View All Employees
+        </button>
+
+        <!-- View All Employees Modal -->
+        <div class="modal fade" id="viewAllEmployeesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">All Employees</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body for View All Pending Reimbursements -->
+                    <div class="modal-body allEmployees">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Title</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allEmployeesInfo">
+                                <!-- <tr>
+                                    <th scope="row">12</th>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                    <td>dummytext</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- View All Pending Reimbursements Button -->
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#viewAllPendingReimbursementsModal" style="width: 50%; margin-left: 25%; margin-top:20px;">
             View All Employee Pending Reimbursements
