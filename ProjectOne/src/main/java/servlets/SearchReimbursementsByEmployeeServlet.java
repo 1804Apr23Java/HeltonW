@@ -27,23 +27,20 @@ import dao.ReimbursementDAOImpl;
 public class SearchReimbursementsByEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		ObjectMapper objectMapper = new ObjectMapper();
-		if(session != null) {
-			response.setContentType("application/json");
-			
-			String empId = request.getParameter("empId");
-			
-			ReimbursementDAO reimbursementDAO = new ReimbursementDAOImpl();
-			List<Reimbursement> list = reimbursementDAO.getReimbursementsByEmployee(Integer.parseInt(empId));
-			PrintWriter writer = response.getWriter();
-			writer.write(objectMapper.writeValueAsString(list));
-		}
+		response.setContentType("application/json");
+		
+		String empId = request.getParameter("empId");
+		System.out.println(empId);
+		
+		ReimbursementDAO reimbursementDAO = new ReimbursementDAOImpl();
+		List<Reimbursement> list = reimbursementDAO.getReimbursementsByEmployee(Integer.parseInt(empId));
+		PrintWriter writer = response.getWriter();
+		writer.write(objectMapper.writeValueAsString(list));
 	}
 
 

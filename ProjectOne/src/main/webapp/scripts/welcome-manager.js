@@ -9,7 +9,6 @@ function ajaxGet(url, func) {
     xhr.send();
 }
 
-
 /* GET array of all pending reimbursements */
 var employeeURL = "http://localhost:8083/Reimbursement/AllPendingReimbursements";
 ajaxGet(employeeURL, populateAllPendingReimbursements);
@@ -131,6 +130,7 @@ function populateAllEmployees(xhr) {
     }
 }
 
+/* search reimbursements by emp id */
 function searchReimbursementsByEmployee(xhr){
     var reimbursementsArray = JSON.parse(xhr.responseText);
     var pendingTable = document.getElementById("searchReimbursementsByEmployeeTable");
@@ -162,5 +162,23 @@ function searchReimbursementsByEmployee(xhr){
 
 document.getElementById("searchByEmployeeButton").addEventListener("click", function(){
     employeeURL = "http://localhost:8083/Reimbursement/SearchReimbursementsByEmployee";
-    ajaxGet(employeeURL, searchReimbursementsByEmployee);
+    dummy();
 })
+
+function dummy()
+{
+    ajaxPostEmpIdSearch(employeeURL, searchReimbursementsByEmployee);
+}
+function ajaxPostEmpIdSearch(url, func) {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            func(this);
+        }
+    }
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var empId = "empId=" + document.getElementById("employeeIdSearch").value;
+    console.log(empId);
+    xhr.send(empId);
+}

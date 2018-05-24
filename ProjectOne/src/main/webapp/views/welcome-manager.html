@@ -372,7 +372,6 @@
                         </button>
                     </div>
                     <!-- Modal Body for View All Resolved Reimbursements -->
-                    <form action="SearchReimbursementsByEmployee" method="post"></form>
                     <div class="modal-body searchEmployee">
 
                         <div class="modal-body">
@@ -388,7 +387,6 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <input type="submit" id="searchByEmployeeButton" class="btn btn-primary" value="Search" data-toggle="modal" data-target="#displayEmployeeResultsModal">
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -418,7 +416,7 @@
                                     <th scope="col">Amount</th>
                                 </tr>
                             </thead>
-                            <tbody id="allEmployeesResolvedReimbursements">
+                            <tbody id="searchReimbursementsByEmployeeTable">
                                 <!-- <tr>
                                         <th scope="row">12</th>
                                         <td>dummytext</td>
