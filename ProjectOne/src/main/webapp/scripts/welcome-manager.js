@@ -14,21 +14,22 @@ var employeeURL = "http://localhost:8083/Reimbursement/AllPendingReimbursements"
 ajaxGet(employeeURL, populateAllPendingReimbursements);
 
 function populateAllPendingReimbursements(xhr) {
-    var reimbursementsArray = JSON.parse(xhr.responseText);
-    var pendingTable = document.getElementById("allEmployeesPendingReimbursements");
-    for (i in reimbursementsArray) {
-        var reimbursementId = reimbursementsArray[i].reimbursementId;
-        var dateTimeStamp = reimbursementsArray[i].dateTimeStamp;
-        var requesterEmployeeId = reimbursementsArray[i].requesterEmployeeId;
-        var approvalStatus = reimbursementsArray[i].approvalStatus;
-        var approvalManagerId = reimbursementsArray[i].approvalManagerId;
+    let reimbursementsArray = JSON.parse(xhr.responseText);
+    let pendingTable = document.getElementById("allEmployeesPendingReimbursements");
+
+    for (let i in reimbursementsArray) {
+        let reimbursementId = reimbursementsArray[i].reimbursementId;
+        let dateTimeStamp = reimbursementsArray[i].dateTimeStamp;
+        let requesterEmployeeId = reimbursementsArray[i].requesterEmployeeId;
+        let approvalStatus = reimbursementsArray[i].approvalStatus;
+        let approvalManagerId = reimbursementsArray[i].approvalManagerId;
         if (approvalManagerId == 0) {
             approvalManagerId == "none";
         }
-        var descriptionNote = reimbursementsArray[i].descriptionNote;
-        var currencyValue = reimbursementsArray[i].currencyValue;
+        let descriptionNote = reimbursementsArray[i].descriptionNote;
+        let currencyValue = reimbursementsArray[i].currencyValue;
 
-        var newTableRow = document.createElement("tr");
+        let newTableRow = document.createElement("tr");
         newTableRow.innerHTML = `
         <th scope="row">${reimbursementId}</th>
             <td>${dateTimeStamp}</td>
@@ -49,6 +50,7 @@ function populateAllPendingReimbursements(xhr) {
                 </form>
             </td>
         `;
+
 
         pendingTable.appendChild(newTableRow);
         document.getElementById("approve" + reimbursementId).addEventListener("click", function(){
@@ -173,5 +175,6 @@ function ajaxPostEmpIdSearch(url, func) {
     xhr.open("POST", url);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var empId = "empId=" + document.getElementById("employeeIdSearch").value;
+    console.log(empId);
     xhr.send(empId);
 }
