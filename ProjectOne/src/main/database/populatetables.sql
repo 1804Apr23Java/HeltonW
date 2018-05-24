@@ -32,6 +32,10 @@ INSERT INTO REIMBURSEMENT (REQUESTER_EMP_ID, APPROVAL_STATUS, DESCRIPTION_NOTE, 
     VALUES (205, 'approved', 'Dorem dipsum dolor dit damet, consectetur adipiscing elit.', 222.55);
 INSERT INTO REIMBURSEMENT (REQUESTER_EMP_ID, APPROVAL_STATUS, DESCRIPTION_NOTE, CURRENCY_VALUE)
     VALUES (205, 'approved', 'Eorem epsum eolor eit eamet, consectetur adipiscing elit.', 333.00);
+INSERT INTO REIMBURSEMENT (REQUESTER_EMP_ID, APPROVAL_STATUS, DESCRIPTION_NOTE, CURRENCY_VALUE)
+    VALUES (205, 'denied', 'Forem fipsum folor fit famet, consectetur adipiscing elit.', 444.55);
+INSERT INTO REIMBURSEMENT (REQUESTER_EMP_ID, APPROVAL_STATUS, DESCRIPTION_NOTE, CURRENCY_VALUE)
+    VALUES (205, 'denied', 'Gorem gepsum golor git gamet, consectetur adipiscing elit.', 555.00);
     
 INSERT INTO REIMB_IMAGES (IMAGE_REIMB_ID) VALUES (1);
 INSERT INTO REIMB_IMAGES (IMAGE_REIMB_ID) VALUES (2);

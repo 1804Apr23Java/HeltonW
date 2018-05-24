@@ -65,4 +65,12 @@
     <servlet-name>ThisEmployeesPendingReimbursementsServlet</servlet-name>
     <url-pattern>/ThisEmployeesPendingReimbursements</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ThisEmployeesResolvedReimbursementsServlet</servlet-name>
+    <servlet-class>servlets.ThisEmployeesResolvedReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThisEmployeesResolvedReimbursementsServlet</servlet-name>
+    <url-pattern>/ThisEmployeesResolvedReimbursements</url-pattern>
+  </servlet-mapping>
 </web-app>
