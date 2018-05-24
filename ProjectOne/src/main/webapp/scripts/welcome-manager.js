@@ -51,14 +51,11 @@ function populateAllPendingReimbursements(xhr) {
             </td>
         `;
 
-
         pendingTable.appendChild(newTableRow);
         document.getElementById("approve" + reimbursementId).addEventListener("click", function(){
-            alert(`${reimbursementId}`);
             document.getElementById("approve" + reimbursementId + "form").submit()
         });
         document.getElementById("deny" + reimbursementId).addEventListener("click", function(){
-            alert(`${reimbursementId}`);
             document.getElementById("deny" + reimbursementId + "form").submit()
         });
     }

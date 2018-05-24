@@ -68,9 +68,9 @@ public class EmployeeDAOTest {
 	public void testUpdateEmployee() {	
 		employeeDAO.createEmployee("user3", "pass3", "First33", "Last33", "emp@email.com", false);
 		Employee employeeUnderTest = employeeDAO.getEmployee("user3");
-		employeeDAO.updateEmployee(employeeUnderTest.getEmployeeId(), "First33", "Last33", "emp@email.com");
+		employeeDAO.updateEmployee(employeeUnderTest.getEmployeeId(), "First44", "Last44", "emp@email.com");
 		employeeUnderTest = employeeDAO.getEmployee("user3");
-		assertTrue(employeeUnderTest.validatePassword("updatedPass"));
+		assertTrue(employeeUnderTest.getLastName().equals("Last44"));
 	}
 	
 	@Test
